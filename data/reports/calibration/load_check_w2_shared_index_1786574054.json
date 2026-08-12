@@ -1,0 +1,2501 @@
+{
+  "system": "shared_index",
+  "search_base_url": "http://localhost:9203",
+  "write_base_url": "http://localhost:9202",
+  "calibration_run": true,
+  "check": "w2_combined_load",
+  "query_load": {
+    "requests_attempted": 3001,
+    "requests_succeeded": 3001,
+    "duration_s": 60.008,
+    "target_qps": 50.0,
+    "achieved_qps": 50.01,
+    "errors_count": 0,
+    "timeout_count": 0,
+    "error_rate_pct": 0.0,
+    "latency_ms_p50_overall": 3.261500009102747,
+    "latency_ms_p95_overall": 6.1803339922335,
+    "latency_ms_p95_first_half": 6.021499983035028,
+    "latency_ms_p95_second_half": 6.303403858328238,
+    "error_samples": []
+  },
+  "write_load": {
+    "docs_offered": 30100,
+    "docs_indexed": 30100,
+    "duration_s": 60.643,
+    "target_docs_per_s": 500.0,
+    "achieved_docs_per_s": 496.35,
+    "batch_size": 100,
+    "item_errors_count": 0,
+    "item_error_samples": []
+  },
+  "thread_pool_write_stats_before": {
+    "_nodes": {
+      "total": 2,
+      "successful": 2,
+      "failed": 0
+    },
+    "cluster_name": "s1-shared-index",
+    "nodes": {
+      "JFWKXruQTJuISp7ELLBHvw": {
+        "timestamp": 1786573994323,
+        "name": "os-s1-search",
+        "transport_address": "172.18.0.4:9300",
+        "host": "172.18.0.4",
+        "ip": "172.18.0.4:9300",
+        "roles": [
+          "search"
+        ],
+        "attributes": {
+          "remote_store.repository.s1-repo.settings.path_style_access": "true",
+          "remote_store.repository.s1-repo.settings.region": "us-east-1",
+          "remote_store.repository.s1-repo.settings.endpoint": "http://minio:9000",
+          "remote_store.repository.s1-repo.settings.bucket": "opensearch-remote-store",
+          "remote_store.repository.s1-repo.type": "s3",
+          "remote_store.state.repository": "s1-repo",
+          "remote_store.repository.s1-repo.settings.base_path": "remote-store",
+          "shard_indexing_pressure_enabled": "true",
+          "remote_store.segment.repository": "s1-repo",
+          "remote_store.translog.repository": "s1-repo"
+        },
+        "thread_pool": {
+          "_plugin_geospatial_ip2geo_datasource_update": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "_plugin_neural_search_hybrid_query_executor": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "_plugin_search_relevance_executor": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "ad-batch-task-threadpool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "ad-threadpool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "analyze": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "fetch_shard_started": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "fetch_shard_store": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 1
+          },
+          "flush": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 1
+          },
+          "force_merge": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "forecast-threadpool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "future_completion": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 2
+          },
+          "generic": {
+            "threads": 6,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 6,
+            "completed": 10677
+          },
+          "get": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "grpc": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "index_searcher": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0,
+            "total_wait_time_in_nanos": 0
+          },
+          "listener": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "low_transfer_queue_consumer": {
+            "threads": 2,
+            "queue": 0,
+            "active": 2,
+            "rejected": 0,
+            "largest": 2,
+            "completed": 0
+          },
+          "management": {
+            "threads": 2,
+            "queue": 0,
+            "active": 1,
+            "rejected": 0,
+            "largest": 2,
+            "completed": 117
+          },
+          "merge": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "normal_transfer_queue_consumer": {
+            "threads": 5,
+            "queue": 0,
+            "active": 5,
+            "rejected": 0,
+            "largest": 5,
+            "completed": 0
+          },
+          "open_distro_job_scheduler": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_asynchronous_search_generic": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 3
+          },
+          "opensearch_deprovision_workflow": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_mcp_tools_sync": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_agentic_memory": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_deploy": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_execute": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_execute_stream": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_general": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_ingest": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_predict": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_predict_remote": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_predict_stream": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_register": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_sdkclient": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_train": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_provision_workflow": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_workflow": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "priority_future_completion": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "priority_stream_reader": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "query_insights_executor": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 225
+          },
+          "refresh": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 1060
+          },
+          "remote_download": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "remote_purge": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 3
+          },
+          "remote_recovery": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 2,
+            "completed": 111
+          },
+          "remote_refresh_retry": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "remote_state_checksum": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "remote_state_read": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "replication_follower": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "replication_leader": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "rule_serial_executor": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "search": {
+            "threads": 4,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 4,
+            "completed": 6210,
+            "total_wait_time_in_nanos": 3868640273
+          },
+          "search_throttled": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0,
+            "total_wait_time_in_nanos": 0
+          },
+          "seismic_thread_pool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "snapshot": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "snapshot_deletion": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "sql-worker": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "sql_background_io": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "stream_reader": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "stream_search": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0,
+            "total_wait_time_in_nanos": 0
+          },
+          "system_read": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "system_write": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "training": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "translog_recovery": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "translog_sync": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "translog_transfer": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "urgent_future_completion": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "urgent_stream_reader": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "warmer": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "websearch-crawler-threadpool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "write": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          }
+        },
+        "native_memory": {
+          "total_estimated_bytes": 248786944
+        }
+      },
+      "fOW7pg23TO6hVEXVlUER0w": {
+        "timestamp": 1786573994322,
+        "name": "os-s1-data",
+        "transport_address": "172.18.0.3:9300",
+        "host": "172.18.0.3",
+        "ip": "172.18.0.3:9300",
+        "roles": [
+          "cluster_manager",
+          "data",
+          "ingest"
+        ],
+        "attributes": {
+          "remote_store.repository.s1-repo.settings.path_style_access": "true",
+          "remote_store.repository.s1-repo.settings.region": "us-east-1",
+          "remote_store.repository.s1-repo.settings.endpoint": "http://minio:9000",
+          "remote_store.repository.s1-repo.settings.bucket": "opensearch-remote-store",
+          "remote_store.repository.s1-repo.type": "s3",
+          "remote_store.state.repository": "s1-repo",
+          "remote_store.repository.s1-repo.settings.base_path": "remote-store",
+          "shard_indexing_pressure_enabled": "true",
+          "remote_store.segment.repository": "s1-repo",
+          "remote_store.translog.repository": "s1-repo"
+        },
+        "thread_pool": {
+          "_plugin_geospatial_ip2geo_datasource_update": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "_plugin_neural_search_hybrid_query_executor": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "_plugin_search_relevance_executor": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "ad-batch-task-threadpool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "ad-threadpool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "analyze": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "fetch_shard_started": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 1
+          },
+          "fetch_shard_store": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 1
+          },
+          "flush": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 5
+          },
+          "force_merge": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "forecast-threadpool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "future_completion": {
+            "threads": 2,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 2,
+            "completed": 285
+          },
+          "generic": {
+            "threads": 7,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 7,
+            "completed": 13237
+          },
+          "get": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "grpc": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "index_searcher": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0,
+            "total_wait_time_in_nanos": 0
+          },
+          "listener": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "low_transfer_queue_consumer": {
+            "threads": 2,
+            "queue": 0,
+            "active": 2,
+            "rejected": 0,
+            "largest": 2,
+            "completed": 0
+          },
+          "management": {
+            "threads": 5,
+            "queue": 0,
+            "active": 1,
+            "rejected": 0,
+            "largest": 5,
+            "completed": 546
+          },
+          "merge": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "normal_transfer_queue_consumer": {
+            "threads": 5,
+            "queue": 0,
+            "active": 5,
+            "rejected": 0,
+            "largest": 5,
+            "completed": 0
+          },
+          "open_distro_job_scheduler": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_asynchronous_search_generic": {
+            "threads": 2,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 2,
+            "completed": 5
+          },
+          "opensearch_deprovision_workflow": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_mcp_tools_sync": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_agentic_memory": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_deploy": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_execute": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_execute_stream": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_general": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 108
+          },
+          "opensearch_ml_ingest": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_predict": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_predict_remote": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_predict_stream": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_register": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_sdkclient": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_train": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_provision_workflow": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_workflow": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "priority_future_completion": {
+            "threads": 2,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 2,
+            "completed": 51
+          },
+          "priority_stream_reader": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 51
+          },
+          "query_insights_executor": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 229
+          },
+          "refresh": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 4358
+          },
+          "remote_download": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "remote_purge": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 10
+          },
+          "remote_recovery": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "remote_refresh_retry": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 4
+          },
+          "remote_state_checksum": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "remote_state_read": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "replication_follower": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "replication_leader": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "rule_serial_executor": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "search": {
+            "threads": 4,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 4,
+            "completed": 15,
+            "total_wait_time_in_nanos": 1404251
+          },
+          "search_throttled": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0,
+            "total_wait_time_in_nanos": 0
+          },
+          "seismic_thread_pool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "snapshot": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "snapshot_deletion": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "sql-worker": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "sql_background_io": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "stream_reader": {
+            "threads": 4,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 4,
+            "completed": 159
+          },
+          "stream_search": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0,
+            "total_wait_time_in_nanos": 0
+          },
+          "system_read": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 1
+          },
+          "system_write": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "training": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "translog_recovery": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "translog_sync": {
+            "threads": 8,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 8,
+            "completed": 44
+          },
+          "translog_transfer": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "urgent_future_completion": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 38
+          },
+          "urgent_stream_reader": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 38
+          },
+          "warmer": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "websearch-crawler-threadpool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "write": {
+            "threads": 2,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 2,
+            "completed": 86
+          }
+        },
+        "native_memory": {
+          "total_estimated_bytes": 440365056
+        }
+      }
+    }
+  },
+  "thread_pool_write_stats_after": {
+    "_nodes": {
+      "total": 2,
+      "successful": 2,
+      "failed": 0
+    },
+    "cluster_name": "s1-shared-index",
+    "nodes": {
+      "JFWKXruQTJuISp7ELLBHvw": {
+        "timestamp": 1786574054979,
+        "name": "os-s1-search",
+        "transport_address": "172.18.0.4:9300",
+        "host": "172.18.0.4",
+        "ip": "172.18.0.4:9300",
+        "roles": [
+          "search"
+        ],
+        "attributes": {
+          "remote_store.repository.s1-repo.settings.path_style_access": "true",
+          "remote_store.repository.s1-repo.settings.region": "us-east-1",
+          "remote_store.repository.s1-repo.settings.endpoint": "http://minio:9000",
+          "remote_store.repository.s1-repo.settings.bucket": "opensearch-remote-store",
+          "remote_store.repository.s1-repo.type": "s3",
+          "remote_store.state.repository": "s1-repo",
+          "remote_store.repository.s1-repo.settings.base_path": "remote-store",
+          "shard_indexing_pressure_enabled": "true",
+          "remote_store.segment.repository": "s1-repo",
+          "remote_store.translog.repository": "s1-repo"
+        },
+        "thread_pool": {
+          "_plugin_geospatial_ip2geo_datasource_update": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "_plugin_neural_search_hybrid_query_executor": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "_plugin_search_relevance_executor": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "ad-batch-task-threadpool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "ad-threadpool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "analyze": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "fetch_shard_started": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "fetch_shard_store": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 1
+          },
+          "flush": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 1
+          },
+          "force_merge": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "forecast-threadpool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "future_completion": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 2
+          },
+          "generic": {
+            "threads": 6,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 6,
+            "completed": 11291
+          },
+          "get": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "grpc": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "index_searcher": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0,
+            "total_wait_time_in_nanos": 0
+          },
+          "listener": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "low_transfer_queue_consumer": {
+            "threads": 2,
+            "queue": 0,
+            "active": 2,
+            "rejected": 0,
+            "largest": 2,
+            "completed": 0
+          },
+          "management": {
+            "threads": 2,
+            "queue": 0,
+            "active": 1,
+            "rejected": 0,
+            "largest": 2,
+            "completed": 124
+          },
+          "merge": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "normal_transfer_queue_consumer": {
+            "threads": 5,
+            "queue": 0,
+            "active": 5,
+            "rejected": 0,
+            "largest": 5,
+            "completed": 0
+          },
+          "open_distro_job_scheduler": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_asynchronous_search_generic": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 3
+          },
+          "opensearch_deprovision_workflow": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_mcp_tools_sync": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_agentic_memory": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_deploy": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_execute": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_execute_stream": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_general": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_ingest": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_predict": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_predict_remote": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_predict_stream": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_register": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_sdkclient": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_train": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_provision_workflow": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_workflow": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "priority_future_completion": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "priority_stream_reader": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "query_insights_executor": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 237
+          },
+          "refresh": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 1121
+          },
+          "remote_download": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "remote_purge": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 3
+          },
+          "remote_recovery": {
+            "threads": 2,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 2,
+            "completed": 285
+          },
+          "remote_refresh_retry": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "remote_state_checksum": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "remote_state_read": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "replication_follower": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "replication_leader": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "rule_serial_executor": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "search": {
+            "threads": 4,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 4,
+            "completed": 12212,
+            "total_wait_time_in_nanos": 4184492962
+          },
+          "search_throttled": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0,
+            "total_wait_time_in_nanos": 0
+          },
+          "seismic_thread_pool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "snapshot": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "snapshot_deletion": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "sql-worker": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "sql_background_io": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "stream_reader": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "stream_search": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0,
+            "total_wait_time_in_nanos": 0
+          },
+          "system_read": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "system_write": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "training": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "translog_recovery": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "translog_sync": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "translog_transfer": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "urgent_future_completion": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "urgent_stream_reader": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "warmer": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "websearch-crawler-threadpool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "write": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          }
+        },
+        "native_memory": {
+          "total_estimated_bytes": 249131008
+        }
+      },
+      "fOW7pg23TO6hVEXVlUER0w": {
+        "timestamp": 1786574054979,
+        "name": "os-s1-data",
+        "transport_address": "172.18.0.3:9300",
+        "host": "172.18.0.3",
+        "ip": "172.18.0.3:9300",
+        "roles": [
+          "cluster_manager",
+          "data",
+          "ingest"
+        ],
+        "attributes": {
+          "remote_store.repository.s1-repo.settings.path_style_access": "true",
+          "remote_store.repository.s1-repo.settings.region": "us-east-1",
+          "remote_store.repository.s1-repo.settings.endpoint": "http://minio:9000",
+          "remote_store.repository.s1-repo.settings.bucket": "opensearch-remote-store",
+          "remote_store.repository.s1-repo.type": "s3",
+          "remote_store.state.repository": "s1-repo",
+          "remote_store.repository.s1-repo.settings.base_path": "remote-store",
+          "shard_indexing_pressure_enabled": "true",
+          "remote_store.segment.repository": "s1-repo",
+          "remote_store.translog.repository": "s1-repo"
+        },
+        "thread_pool": {
+          "_plugin_geospatial_ip2geo_datasource_update": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "_plugin_neural_search_hybrid_query_executor": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "_plugin_search_relevance_executor": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "ad-batch-task-threadpool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "ad-threadpool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "analyze": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "fetch_shard_started": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 1
+          },
+          "fetch_shard_store": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 1
+          },
+          "flush": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 5
+          },
+          "force_merge": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "forecast-threadpool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "future_completion": {
+            "threads": 2,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 2,
+            "completed": 501
+          },
+          "generic": {
+            "threads": 7,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 7,
+            "completed": 13975
+          },
+          "get": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "grpc": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "index_searcher": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0,
+            "total_wait_time_in_nanos": 0
+          },
+          "listener": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "low_transfer_queue_consumer": {
+            "threads": 2,
+            "queue": 0,
+            "active": 2,
+            "rejected": 0,
+            "largest": 2,
+            "completed": 0
+          },
+          "management": {
+            "threads": 5,
+            "queue": 0,
+            "active": 1,
+            "rejected": 0,
+            "largest": 5,
+            "completed": 851
+          },
+          "merge": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "normal_transfer_queue_consumer": {
+            "threads": 5,
+            "queue": 0,
+            "active": 5,
+            "rejected": 0,
+            "largest": 5,
+            "completed": 0
+          },
+          "open_distro_job_scheduler": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_asynchronous_search_generic": {
+            "threads": 2,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 2,
+            "completed": 5
+          },
+          "opensearch_deprovision_workflow": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_mcp_tools_sync": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_agentic_memory": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_deploy": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_execute": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_execute_stream": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_general": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 114
+          },
+          "opensearch_ml_ingest": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_predict": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_predict_remote": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_predict_stream": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_register": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_sdkclient": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_ml_train": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_provision_workflow": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "opensearch_workflow": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "priority_future_completion": {
+            "threads": 2,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 2,
+            "completed": 151
+          },
+          "priority_stream_reader": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 151
+          },
+          "query_insights_executor": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 241
+          },
+          "refresh": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 4648
+          },
+          "remote_download": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "remote_purge": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 72
+          },
+          "remote_recovery": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "remote_refresh_retry": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 4
+          },
+          "remote_state_checksum": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "remote_state_read": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "replication_follower": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "replication_leader": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "rule_serial_executor": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "search": {
+            "threads": 4,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 4,
+            "completed": 15,
+            "total_wait_time_in_nanos": 1404251
+          },
+          "search_throttled": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0,
+            "total_wait_time_in_nanos": 0
+          },
+          "seismic_thread_pool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "snapshot": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "snapshot_deletion": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "sql-worker": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "sql_background_io": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "stream_reader": {
+            "threads": 4,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 4,
+            "completed": 333
+          },
+          "stream_search": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0,
+            "total_wait_time_in_nanos": 0
+          },
+          "system_read": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 1
+          },
+          "system_write": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "training": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "translog_recovery": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "translog_sync": {
+            "threads": 8,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 8,
+            "completed": 138
+          },
+          "translog_transfer": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "urgent_future_completion": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 38
+          },
+          "urgent_stream_reader": {
+            "threads": 1,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 1,
+            "completed": 38
+          },
+          "warmer": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "websearch-crawler-threadpool": {
+            "threads": 0,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 0,
+            "completed": 0
+          },
+          "write": {
+            "threads": 2,
+            "queue": 0,
+            "active": 0,
+            "rejected": 0,
+            "largest": 2,
+            "completed": 387
+          }
+        },
+        "native_memory": {
+          "total_estimated_bytes": 444768256
+        }
+      }
+    }
+  },
+  "container_resource_usage": {
+    "os-s1-data": {
+      "sample_count": 15,
+      "cpu_pct_avg": 19.19,
+      "cpu_pct_max": 44.79,
+      "mem_mb_avg": 1755.5,
+      "mem_mb_max": 1760.3
+    },
+    "os-s1-search": {
+      "sample_count": 15,
+      "cpu_pct_avg": 18.52,
+      "cpu_pct_max": 26.8,
+      "mem_mb_avg": 1556.0,
+      "mem_mb_max": 1556.5
+    }
+  },
+  "created_at": "2026-08-12T22:34:14Z"
+}

@@ -1,0 +1,64 @@
+{
+  "_description": "Frozen benchmark parameters for the Local Index (L1) vs Shared Index (S1) OpenSearch experiment. Written once calibration was complete; do not edit after the formal 18 runs begin — cut a new file/commit instead so historical runs stay traceable to the parameters that produced them.",
+  "based_on_commit": "119b576",
+  "frozen_at": "2026-08-12T00:00:00Z",
+  "seed": 42,
+  "independent_variable": "architecture",
+  "architectures": {
+    "local_index": {
+      "label": "L1",
+      "write_base_url": "http://localhost:9200",
+      "search_base_url": "http://localhost:9200",
+      "index_name": "products"
+    },
+    "shared_index": {
+      "label": "S1",
+      "write_base_url": "http://localhost:9202",
+      "search_base_url": "http://localhost:9203",
+      "index_name": "products",
+      "notes": "Logical compute/storage disaggregation using OpenSearch remote-backed storage; os-s1-data and os-s1-search are co-located containers, not physically independent infrastructure."
+    }
+  },
+  "corpus": {
+    "total_docs": 1141069,
+    "offline_fraction": 0.8,
+    "index_batch_size": 500,
+    "write_feed_batch_size": 50
+  },
+  "query_set": {
+    "fixed_size": 5000,
+    "file": "data/queries_fixed_5000_corpus_relevant.parquet",
+    "notes": "Fixed set, never filtered based on OpenSearch hit results; reused unmodified across all systems and workloads."
+  },
+  "query_rate_qps": 50,
+  "workloads": {
+    "W0": { "qps": 50, "docs_per_s": 0, "description": "read-only baseline" },
+    "W1": { "qps": 50, "docs_per_s": 250, "description": "moderate concurrent indexing" },
+    "W2": { "qps": 50, "docs_per_s": 500, "description": "heavy concurrent indexing" }
+  },
+  "calibration_verdicts": {
+    "query_qps_check": {
+      "target_qps": 50,
+      "locked_qps": 50,
+      "verdict": "both L1 and S1 sustained ~50.01 QPS with 0 errors/timeouts and no saturation signal over 60s; locked without dropping to 25",
+      "reports": [
+        "data/reports/calibration/load_check_query_local_index_1786572872.json",
+        "data/reports/calibration/load_check_query_shared_index_1786573287.json"
+      ]
+    },
+    "write_docs_per_s_check": {
+      "target_docs_per_s": 500,
+      "locked_docs_per_s": 500,
+      "verdict": "S1 sustained 496.35 docs/s (99.3% of target) at 50 QPS concurrent read load, 0 write errors/rejections, thread_pool.write.rejected stayed at 0 with no queue growth; locked at 500 without a 400 docs/s retry",
+      "reports": [
+        "data/reports/calibration/load_check_w2_shared_index_1786574054.json"
+      ]
+    }
+  },
+  "formal_run_matrix": {
+    "architectures": 2,
+    "workloads": 3,
+    "repetitions": 3,
+    "total_runs": 18
+  }
+}

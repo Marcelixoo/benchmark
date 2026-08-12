@@ -50,6 +50,20 @@ def index_batch(os_client: OpenSearch, index_name: str, id_field: str, documents
     return success
 
 
+def index_batch_tolerant(os_client: OpenSearch, index_name: str, id_field: str, documents: list[dict[str, Any]]) -> dict[str, Any]:
+    """Like index_batch, but does not raise on a partial bulk failure — for
+    load-generation code where one bad item shouldn't abort an in-progress
+    rate-controlled run. Returns success/error counts plus a few raw error
+    samples for diagnosis.
+    """
+    actions = (
+        {"_index": index_name, "_id": doc[id_field], "_source": doc}
+        for doc in documents
+    )
+    success, errors = bulk(os_client, actions, raise_on_error=False, stats_only=False)
+    return {"success": success, "errors": len(errors), "error_samples": errors[:5]}
+
+
 def search(os_client: OpenSearch, index_name: str, query_text: str, size: int = 10) -> list[dict[str, Any]]:
     resp = os_client.search(
         index=index_name,
@@ -61,6 +75,19 @@ def search(os_client: OpenSearch, index_name: str, query_text: str, size: int = 
 def fetch_stats(os_client: OpenSearch, index_name: str) -> dict[str, Any] | None:
     try:
         return os_client.indices.stats(index=index_name)
+    except Exception:
+        return None
+
+
+def thread_pool_write_stats(os_client: OpenSearch) -> dict[str, Any] | None:
+    """Raw Nodes Stats API response scoped to thread pools, used only to detect
+    write-queue backlog (queue/rejected deltas) during the W2 write-rate
+    calibration check. Field names (pool name, e.g. `write` vs `bulk`) must be
+    confirmed against a live cluster before being relied on for the backlog
+    signal — not assumed from OpenSearch documentation alone.
+    """
+    try:
+        return os_client.transport.perform_request("GET", "/_nodes/stats/thread_pool")
     except Exception:
         return None
 

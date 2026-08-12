@@ -1,0 +1,36 @@
+{
+  "system": "shared_index",
+  "search_base_url": "http://localhost:9203",
+  "calibration_run": true,
+  "check": "w1_query_load",
+  "requests_attempted": 3001,
+  "requests_succeeded": 3001,
+  "duration_s": 60.01,
+  "target_qps": 50.0,
+  "achieved_qps": 50.01,
+  "errors_count": 0,
+  "timeout_count": 0,
+  "error_rate_pct": 0.0,
+  "latency_ms_p50_overall": 4.9679160001687706,
+  "latency_ms_p95_overall": 7.338833995163441,
+  "latency_ms_p95_first_half": 7.506791007472202,
+  "latency_ms_p95_second_half": 7.224015268729999,
+  "error_samples": [],
+  "container_resource_usage": {
+    "os-s1-data": {
+      "sample_count": 15,
+      "cpu_pct_avg": 1.21,
+      "cpu_pct_max": 2.42,
+      "mem_mb_avg": 1536.1,
+      "mem_mb_max": 1537.0
+    },
+    "os-s1-search": {
+      "sample_count": 15,
+      "cpu_pct_avg": 31.06,
+      "cpu_pct_max": 68.02,
+      "mem_mb_avg": 1545.3,
+      "mem_mb_max": 1550.3
+    }
+  },
+  "created_at": "2026-08-12T22:21:27Z"
+}
