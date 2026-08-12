@@ -113,8 +113,11 @@ were replaced by these corpus-relevant versions and are no longer produced.
 
 ### Cross-dataset compatibility (`validate_compatibility`)
 
-Measurement only — overlap is **not** used to join, filter, or assume ID
-alignment between the two independently-scraped datasets:
+Overall cross-dataset ASIN overlap is reported descriptively. During
+query-corpus construction, this same membership relation is used to retain
+queries for which at least one judged product is present in the initial
+product corpus. No relevance scores or retrieval results are used for query
+selection:
 
 - Initial corpus ASINs: 1,141,069
 - Unique `product_id`s in query dataset: 1,802,772
@@ -165,15 +168,25 @@ engines:
   `cluster.routing.search_replica.strict: "true"` so search traffic can only
   land on the search replica, never the primary. Shards:
   `number_of_shards: 1`, `number_of_replicas: 0`,
-  `number_of_search_replicas: 1` → also 2 shard copies, same total count as
-  L1, differing only in role split (regular replica vs. dedicated search
-  replica) — so shard count doesn't confound the comparison.
+  `number_of_search_replicas: 1`.
+
+Both configurations use one primary shard and one additional searchable
+shard copy. The additional copy differs intentionally in replication and
+ownership semantics: L1 uses a conventional replica backed by local durable
+storage, whereas S1 uses a dedicated search replica backed by remotely
+published segments. These differences constitute the architectural treatment
+under evaluation.
 
 Both stacks share identical mappings/analyzers (`scripts/opensearch/index_spec.py`,
-one definition reused by both), identical shard count, identical refresh
-interval (OpenSearch default, unmodified in either compose file), and
+one definition reused by both), identical shard count, an identical
+explicitly-pinned refresh interval (`index.refresh_interval: "1s"` set in
+`index_spec.py` for both systems, not left to the OpenSearch default), and
 identical per-node resource limits (`OS_CONTAINER_CPU_LIMIT`,
-`OS_CONTAINER_MEM_LIMIT`, `OS_JAVA_HEAP` in `infra/.env`). The security plugin
+`OS_CONTAINER_MEM_LIMIT`, `OS_JAVA_HEAP` in `infra/.env`). Bulk/index writes
+from `index_initial_corpus.py` / `feed_write_workload.py` never pass
+`refresh=true` — they rely on the OpenSearch API default of `refresh=false`
+and the scheduled 1s refresh above, so a fixed refresh interval isn't
+defeated by forced per-write refreshes. The security plugin
 is disabled on all four nodes, symmetrically — a lab-simplicity decision
 applied identically to both systems, not a confound.
 
@@ -258,7 +271,61 @@ intended architecture, only how it's expressed to OpenSearch 3.7.0:
   already listens on host port 9000. The container-internal port, and every
   in-cluster reference to `http://minio:9000`, is unaffected.
 
+### Locked parameters (this environment, seed=42)
 
+| Parameter | Value |
+|---|---|
+| Search engine | OpenSearch 3.7.0 (both L1 and S1) |
+| Orchestration | Docker Compose |
+| Product source rows | 1,426,337 |
+| Initial (offline) corpus | 1,141,069 rows |
+| Write (online) corpus | 285,268 rows |
+| Corpus split | 80/20, `numpy.random.default_rng(42)` |
+| Query source judgment rows | 2,621,288 |
+| Unique source queries | 130,652 |
+| Corpus-relevant eligible query pool | 60,141 |
+| Fixed benchmark query set | 5,000, seed=42 |
+| L1 nodes | 2 (both data+ingest+cluster_manager) |
+| S1 nodes | 1 data + 1 search, + MinIO |
+| OpenSearch per-node resources | 2 CPU / 2.5 GB (`OS_CONTAINER_CPU_LIMIT`/`OS_CONTAINER_MEM_LIMIT`) |
+| OpenSearch JVM heap | `OS_JAVA_HEAP=1g` (`-Xms1g -Xmx1g`, `infra/.env`) |
+| Primary shards | 1 (both systems) |
+| L1 replicas | 1 conventional replica |
+| S1 replicas | 0 conventional, 1 search replica |
+| S1 search routing | `cluster.routing.search_replica.strict: "true"` |
+| Refresh interval | explicitly `1s` (`scripts/opensearch/index_spec.py`), both systems |
+| Security plugin | disabled, both systems |
+
+### Host environment (this run)
+
+- Mac17,9 (Apple M5 Pro), 64 GB physical RAM, arm64, macOS 26.5.2
+- Docker Desktop 4.86.0, engine 29.7.2
+- Docker Desktop VM cap: 18 CPUs / 7.75 GB RAM (`docker info` →
+  `MemTotal: 8319213568`) — this is what actually bounds L1/S1 sizing, not
+  host RAM; see "Resource sizing" above
+- `minio/minio:latest` resolved to `RELEASE.2025-09-07T16-13-09Z`
+  (image digest `sha256:14cea493d9a34af32f524e538b8346cf79f3321eff8e708c1e2960462bd8936e`);
+  `minio/mc:latest` resolved to digest
+  `sha256:a7fe349ef4bd8521fb8497f55c6042871b2ae640607cf99d9bede5e9bdf11727`.
+  Both tags are floating (`:latest`) in `infra/s1/docker-compose.yml` as of
+  this writing — not yet pinned to an explicit version tag, and MinIO
+  currently has no `deploy.resources.limits` block (unlike the OpenSearch
+  services). Recorded here as the exact versions/digests this run used;
+  pinning both explicitly is still open before calibration.
+
+### Threats to validity (placeholder)
+
+MinIO (S1's remote-store backend) runs in the same Docker Desktop VM as the
+OpenSearch containers it serves, not on physically independent
+compute/storage infrastructure. The correct framing for this setup is
+**logical compute/storage disaggregation using OpenSearch remote-backed
+storage**, not physically independent compute and object-storage
+infrastructure — this affects the realism of network-latency and I/O
+isolation claims for S1. This is an accepted lab constraint for this thesis,
+not something the experiment is being rebuilt around (no move to real AWS
+S3/EC2 is planned); it belongs in a full "Threats to Validity" section
+alongside the other lab-simplicity decisions already noted above (disabled
+security plugin, non-concurrent L1/S1 runs, Docker Desktop's RAM cap).
 
 Downloading `abhishekmungoli/amazon-query-product-search` (a ~1.54 GB
 archive) failed 4 times in a row with 4 distinct transport-level errors

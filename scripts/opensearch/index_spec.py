@@ -35,6 +35,10 @@ def index_settings(*, number_of_replicas: int, number_of_search_replicas: int = 
         "index": {
             "number_of_shards": SHARD_COUNT,
             "number_of_replicas": number_of_replicas,
+            # Pinned explicitly (not left to the OpenSearch default) so it's a
+            # documented, self-contained experiment parameter rather than something
+            # that silently changes if a future OpenSearch version's default does.
+            "refresh_interval": "1s",
         }
     }
     if number_of_search_replicas:
@@ -45,9 +49,10 @@ def index_settings(*, number_of_replicas: int, number_of_search_replicas: int = 
 # Name must match infra/s1/docker-compose.yml's node.attr.remote_store.*.repository
 # value. OpenSearch 3.7.0 makes index.remote_store.* "private" (derived) settings —
 # they can't be set explicitly on create_index (confirmed by a 400 validation_exception
-# when we tried); remote store is instead activated cluster-wide for every new index
-# via cluster.remote_store.enabled in infra/s1/docker-compose.yml, and each index only
-# needs replication.type: SEGMENT (required alongside remote store).
+# when we tried). Remote store is instead activated implicitly once every node carries
+# matching node.attr.remote_store.* attributes (set in infra/s1/docker-compose.yml);
+# there is no cluster-wide "enable remote store" setting in 3.7.0. Each index only needs
+# replication.type: SEGMENT set explicitly (required alongside remote store).
 REMOTE_STORE_REPOSITORY = "s1-repo"
 
 LOCAL_INDEX_SETTINGS = index_settings(number_of_replicas=1)
