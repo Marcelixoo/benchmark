@@ -20,6 +20,10 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--system", required=True, choices=["local_index", "shared_index"])
     parser.add_argument("--n-queries", type=int, default=None)
+    parser.add_argument(
+        "--calibration", action="store_true",
+        help="Label this run as calibration input (not a final benchmark result) and write to a calibration_* report path",
+    )
     args = parser.parse_args()
 
     config = load_config()
@@ -45,13 +49,15 @@ def main() -> None:
 
     result_counts: list[int] = []
     inspect_rows: list[dict] = []
+    errors: list[dict] = []
     inspect_count = config["workload"]["smoke_test_sample_inspect_count"]
 
     for i, row in enumerate(sample_df.itertuples(index=False)):
         try:
             results = os_search(os_client, index_name, row.query_text)
-        except Exception:
-            results = []
+        except Exception as e:
+            errors.append({"query": row.query_text, "error": str(e)})
+            continue
         result_counts.append(len(results))
         if i < inspect_count:
             inspect_rows.append({"query": row.query_text, "result_count": len(results), "results": results[:5]})
@@ -60,7 +66,11 @@ def main() -> None:
     summary = {
         "system": args.system,
         "search_base_url": search_url,
-        "queries_run": len(sample_df),
+        "calibration_run": args.calibration,
+        "queries_attempted": len(sample_df),
+        "queries_succeeded": len(result_counts),
+        "errors_count": len(errors),
+        "error_rate_pct": round(100 * len(errors) / len(sample_df), 2) if len(sample_df) else None,
         "pct_with_at_least_one_result": round(100 * float((counts >= 1).mean()), 2) if len(counts) else None,
         "zero_result_rate_pct": round(100 * float((counts == 0).mean()), 2) if len(counts) else None,
         "median_result_count": float(np.median(counts)) if len(counts) else None,
@@ -69,9 +79,11 @@ def main() -> None:
     }
 
     out_dir = reports_dir(config)
-    report.write_json(out_dir / f"smoke_test_{args.system}.json", {"summary": summary, "sample_for_manual_review": inspect_rows})
+    prefix = "calibration_queries" if args.calibration else "smoke_test"
+    out_path = out_dir / f"{prefix}_{args.system}.json"
+    report.write_json(out_path, {"summary": summary, "sample_for_manual_review": inspect_rows, "errors": errors})
     print(summary)
-    print(f"Wrote {out_dir / f'smoke_test_{args.system}.json'} — manually review the {inspect_count} sampled queries in it.")
+    print(f"Wrote {out_path} — manually review the {inspect_count} sampled queries in it.")
 
 
 if __name__ == "__main__":

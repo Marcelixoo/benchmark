@@ -1,0 +1,1192 @@
+{
+  "system": "shared_index",
+  "write_base_url": "http://localhost:9202",
+  "calibration_run": true,
+  "documents_indexed": 1141069,
+  "duration_s": 1488.657,
+  "docs_per_s": 766.51,
+  "reported_index_stats": {
+    "_shards": {
+      "total": 2,
+      "successful": 2,
+      "failed": 0
+    },
+    "_all": {
+      "primaries": {
+        "docs": {
+          "count": 1141069,
+          "deleted": 0
+        },
+        "store": {
+          "size_in_bytes": 256806550,
+          "reserved_in_bytes": 0
+        },
+        "indexing": {
+          "index_total": 1141069,
+          "index_time_in_millis": 16313,
+          "index_current": 0,
+          "index_failed": 0,
+          "delete_total": 0,
+          "delete_time_in_millis": 0,
+          "delete_current": 0,
+          "noop_update_total": 0,
+          "is_throttled": false,
+          "throttle_time_in_millis": 0,
+          "max_last_index_request_timestamp": 1786567973413
+        },
+        "get": {
+          "total": 0,
+          "getTime": "0s",
+          "time_in_millis": 0,
+          "exists_total": 0,
+          "exists_time_in_millis": 0,
+          "missing_total": 0,
+          "missing_time_in_millis": 0,
+          "current": 0
+        },
+        "search": {
+          "open_contexts": 0,
+          "query_total": 0,
+          "query_time_in_millis": 0,
+          "query_current": 0,
+          "query_failed": 0,
+          "concurrent_query_total": 0,
+          "concurrent_query_time_in_millis": 0,
+          "concurrent_query_current": 0,
+          "concurrent_avg_slice_count": 0.0,
+          "startree_query_total": 0,
+          "startree_query_time_in_millis": 0,
+          "startree_query_current": 0,
+          "startree_query_failed": 0,
+          "fetch_total": 0,
+          "fetch_time_in_millis": 0,
+          "fetch_current": 0,
+          "scroll_total": 0,
+          "scroll_time_in_millis": 0,
+          "scroll_current": 0,
+          "point_in_time_total": 0,
+          "point_in_time_time_in_millis": 0,
+          "point_in_time_current": 0,
+          "suggest_total": 0,
+          "suggest_time_in_millis": 0,
+          "suggest_current": 0,
+          "search_idle_reactivate_count_total": 0
+        },
+        "merges": {
+          "current": 0,
+          "current_docs": 0,
+          "current_size_in_bytes": 0,
+          "total": 166,
+          "total_time_in_millis": 66406,
+          "total_docs": 7162028,
+          "total_size_in_bytes": 1750793926,
+          "total_stopped_time_in_millis": 0,
+          "total_throttled_time_in_millis": 34293,
+          "total_auto_throttle_in_bytes": 13021663,
+          "unreferenced_file_cleanups_performed": 0,
+          "warmer": {
+            "total_invocations_count": 0,
+            "total_time_millis": 0,
+            "total_failure_count": 0,
+            "total_bytes_sent": 0,
+            "total_bytes_received": 0,
+            "total_send_time_millis": 0,
+            "total_receive_time_millis": 0,
+            "ongoing_count": 0
+          }
+        },
+        "refresh": {
+          "total": 1435,
+          "total_time_in_millis": 32809,
+          "external_total": 1434,
+          "external_total_time_in_millis": 54241,
+          "listeners": 0
+        },
+        "flush": {
+          "total": 2,
+          "periodic": 1,
+          "total_time_in_millis": 2
+        },
+        "warmer": {
+          "current": 0,
+          "total": 1433,
+          "total_time_in_millis": 60
+        },
+        "query_cache": {
+          "memory_size_in_bytes": 0,
+          "total_count": 0,
+          "hit_count": 0,
+          "miss_count": 0,
+          "cache_size": 0,
+          "cache_count": 0,
+          "evictions": 0
+        },
+        "fielddata": {
+          "memory_size_in_bytes": 0,
+          "evictions": 0
+        },
+        "completion": {
+          "size_in_bytes": 0
+        },
+        "segments": {
+          "count": 6,
+          "memory_in_bytes": 0,
+          "terms_memory_in_bytes": 0,
+          "stored_fields_memory_in_bytes": 0,
+          "term_vectors_memory_in_bytes": 0,
+          "norms_memory_in_bytes": 0,
+          "points_memory_in_bytes": 0,
+          "doc_values_memory_in_bytes": 0,
+          "index_writer_memory_in_bytes": 0,
+          "version_map_memory_in_bytes": 0,
+          "fixed_bit_set_memory_in_bytes": 0,
+          "max_unsafe_auto_id_timestamp": -1,
+          "remote_store": {
+            "upload": {
+              "total_upload_size": {
+                "started_bytes": 1971564161,
+                "succeeded_bytes": 1971564161,
+                "failed_bytes": 0
+              },
+              "refresh_size_lag": {
+                "total_bytes": 0,
+                "max_bytes": 0
+              },
+              "max_refresh_time_lag_in_millis": 0,
+              "total_time_spent_in_millis": 37610,
+              "pressure": {
+                "total_rejections": 0
+              }
+            },
+            "download": {
+              "total_download_size": {
+                "started_bytes": 0,
+                "succeeded_bytes": 0,
+                "failed_bytes": 0
+              },
+              "total_time_spent_in_millis": 0
+            }
+          },
+          "segment_replication": {
+            "max_bytes_behind": 0,
+            "total_bytes_behind": 0,
+            "max_replication_lag": 0
+          },
+          "file_sizes": {}
+        },
+        "translog": {
+          "operations": 1069,
+          "size_in_bytes": 305305,
+          "uncommitted_operations": 1069,
+          "uncommitted_size_in_bytes": 305305,
+          "earliest_last_modified_age": 3379,
+          "remote_store": {
+            "upload": {
+              "total_uploads": {
+                "started": 2308,
+                "failed": 0,
+                "succeeded": 2308
+              },
+              "total_upload_size": {
+                "started_bytes": 326984991,
+                "failed_bytes": 0,
+                "succeeded_bytes": 326984991
+              }
+            }
+          }
+        },
+        "request_cache": {
+          "memory_size_in_bytes": 0,
+          "evictions": 0,
+          "hit_count": 0,
+          "miss_count": 0
+        },
+        "recovery": {
+          "current_as_source": 0,
+          "current_as_target": 0,
+          "throttle_time_in_millis": 0
+        }
+      },
+      "total": {
+        "docs": {
+          "count": 2282138,
+          "deleted": 0
+        },
+        "store": {
+          "size_in_bytes": 513524168,
+          "reserved_in_bytes": 0
+        },
+        "indexing": {
+          "index_total": 1141069,
+          "index_time_in_millis": 16313,
+          "index_current": 0,
+          "index_failed": 0,
+          "delete_total": 0,
+          "delete_time_in_millis": 0,
+          "delete_current": 0,
+          "noop_update_total": 0,
+          "is_throttled": false,
+          "throttle_time_in_millis": 0,
+          "max_last_index_request_timestamp": 1786567973413
+        },
+        "get": {
+          "total": 0,
+          "getTime": "0s",
+          "time_in_millis": 0,
+          "exists_total": 0,
+          "exists_time_in_millis": 0,
+          "missing_total": 0,
+          "missing_time_in_millis": 0,
+          "current": 0
+        },
+        "search": {
+          "open_contexts": 0,
+          "query_total": 0,
+          "query_time_in_millis": 0,
+          "query_current": 0,
+          "query_failed": 0,
+          "concurrent_query_total": 0,
+          "concurrent_query_time_in_millis": 0,
+          "concurrent_query_current": 0,
+          "concurrent_avg_slice_count": 0.0,
+          "startree_query_total": 0,
+          "startree_query_time_in_millis": 0,
+          "startree_query_current": 0,
+          "startree_query_failed": 0,
+          "fetch_total": 0,
+          "fetch_time_in_millis": 0,
+          "fetch_current": 0,
+          "scroll_total": 0,
+          "scroll_time_in_millis": 0,
+          "scroll_current": 0,
+          "point_in_time_total": 0,
+          "point_in_time_time_in_millis": 0,
+          "point_in_time_current": 0,
+          "suggest_total": 0,
+          "suggest_time_in_millis": 0,
+          "suggest_current": 0,
+          "search_idle_reactivate_count_total": 0
+        },
+        "merges": {
+          "current": 0,
+          "current_docs": 0,
+          "current_size_in_bytes": 0,
+          "total": 166,
+          "total_time_in_millis": 66406,
+          "total_docs": 7162028,
+          "total_size_in_bytes": 1750793926,
+          "total_stopped_time_in_millis": 0,
+          "total_throttled_time_in_millis": 34293,
+          "total_auto_throttle_in_bytes": 13021663,
+          "unreferenced_file_cleanups_performed": 0,
+          "warmer": {
+            "total_invocations_count": 0,
+            "total_time_millis": 0,
+            "total_failure_count": 0,
+            "total_bytes_sent": 0,
+            "total_bytes_received": 0,
+            "total_send_time_millis": 0,
+            "total_receive_time_millis": 0,
+            "ongoing_count": 0
+          }
+        },
+        "refresh": {
+          "total": 3216,
+          "total_time_in_millis": 34265,
+          "external_total": 1434,
+          "external_total_time_in_millis": 54241,
+          "listeners": 0
+        },
+        "flush": {
+          "total": 4,
+          "periodic": 2,
+          "total_time_in_millis": 13
+        },
+        "warmer": {
+          "current": 0,
+          "total": 2850,
+          "total_time_in_millis": 118
+        },
+        "query_cache": {
+          "memory_size_in_bytes": 0,
+          "total_count": 0,
+          "hit_count": 0,
+          "miss_count": 0,
+          "cache_size": 0,
+          "cache_count": 0,
+          "evictions": 0
+        },
+        "fielddata": {
+          "memory_size_in_bytes": 0,
+          "evictions": 0
+        },
+        "completion": {
+          "size_in_bytes": 0
+        },
+        "segments": {
+          "count": 12,
+          "memory_in_bytes": 0,
+          "terms_memory_in_bytes": 0,
+          "stored_fields_memory_in_bytes": 0,
+          "term_vectors_memory_in_bytes": 0,
+          "norms_memory_in_bytes": 0,
+          "points_memory_in_bytes": 0,
+          "doc_values_memory_in_bytes": 0,
+          "index_writer_memory_in_bytes": 0,
+          "version_map_memory_in_bytes": 0,
+          "fixed_bit_set_memory_in_bytes": 0,
+          "max_unsafe_auto_id_timestamp": -1,
+          "remote_store": {
+            "upload": {
+              "total_upload_size": {
+                "started_bytes": 1971564161,
+                "succeeded_bytes": 1971564161,
+                "failed_bytes": 0
+              },
+              "refresh_size_lag": {
+                "total_bytes": 0,
+                "max_bytes": 0
+              },
+              "max_refresh_time_lag_in_millis": 0,
+              "total_time_spent_in_millis": 37610,
+              "pressure": {
+                "total_rejections": 0
+              }
+            },
+            "download": {
+              "total_download_size": {
+                "started_bytes": 1971407646,
+                "succeeded_bytes": 1971407646,
+                "failed_bytes": 0
+              },
+              "total_time_spent_in_millis": 43652
+            }
+          },
+          "segment_replication": {
+            "max_bytes_behind": 0,
+            "total_bytes_behind": 0,
+            "max_replication_lag": 0
+          },
+          "file_sizes": {}
+        },
+        "translog": {
+          "operations": 1069,
+          "size_in_bytes": 305360,
+          "uncommitted_operations": 1069,
+          "uncommitted_size_in_bytes": 305360,
+          "earliest_last_modified_age": 3379,
+          "remote_store": {
+            "upload": {
+              "total_uploads": {
+                "started": 2308,
+                "failed": 0,
+                "succeeded": 2308
+              },
+              "total_upload_size": {
+                "started_bytes": 326984991,
+                "failed_bytes": 0,
+                "succeeded_bytes": 326984991
+              }
+            }
+          }
+        },
+        "request_cache": {
+          "memory_size_in_bytes": 0,
+          "evictions": 0,
+          "hit_count": 0,
+          "miss_count": 0
+        },
+        "recovery": {
+          "current_as_source": 0,
+          "current_as_target": 0,
+          "throttle_time_in_millis": 0
+        }
+      }
+    },
+    "indices": {
+      "products": {
+        "uuid": "YuVWi7IVSq-Iqg4qMMqV6w",
+        "primaries": {
+          "docs": {
+            "count": 1141069,
+            "deleted": 0
+          },
+          "store": {
+            "size_in_bytes": 256806550,
+            "reserved_in_bytes": 0
+          },
+          "indexing": {
+            "index_total": 1141069,
+            "index_time_in_millis": 16313,
+            "index_current": 0,
+            "index_failed": 0,
+            "delete_total": 0,
+            "delete_time_in_millis": 0,
+            "delete_current": 0,
+            "noop_update_total": 0,
+            "is_throttled": false,
+            "throttle_time_in_millis": 0,
+            "max_last_index_request_timestamp": 1786567973413
+          },
+          "get": {
+            "total": 0,
+            "getTime": "0s",
+            "time_in_millis": 0,
+            "exists_total": 0,
+            "exists_time_in_millis": 0,
+            "missing_total": 0,
+            "missing_time_in_millis": 0,
+            "current": 0
+          },
+          "search": {
+            "open_contexts": 0,
+            "query_total": 0,
+            "query_time_in_millis": 0,
+            "query_current": 0,
+            "query_failed": 0,
+            "concurrent_query_total": 0,
+            "concurrent_query_time_in_millis": 0,
+            "concurrent_query_current": 0,
+            "concurrent_avg_slice_count": 0.0,
+            "startree_query_total": 0,
+            "startree_query_time_in_millis": 0,
+            "startree_query_current": 0,
+            "startree_query_failed": 0,
+            "fetch_total": 0,
+            "fetch_time_in_millis": 0,
+            "fetch_current": 0,
+            "scroll_total": 0,
+            "scroll_time_in_millis": 0,
+            "scroll_current": 0,
+            "point_in_time_total": 0,
+            "point_in_time_time_in_millis": 0,
+            "point_in_time_current": 0,
+            "suggest_total": 0,
+            "suggest_time_in_millis": 0,
+            "suggest_current": 0,
+            "search_idle_reactivate_count_total": 0
+          },
+          "merges": {
+            "current": 0,
+            "current_docs": 0,
+            "current_size_in_bytes": 0,
+            "total": 166,
+            "total_time_in_millis": 66406,
+            "total_docs": 7162028,
+            "total_size_in_bytes": 1750793926,
+            "total_stopped_time_in_millis": 0,
+            "total_throttled_time_in_millis": 34293,
+            "total_auto_throttle_in_bytes": 13021663,
+            "unreferenced_file_cleanups_performed": 0,
+            "warmer": {
+              "total_invocations_count": 0,
+              "total_time_millis": 0,
+              "total_failure_count": 0,
+              "total_bytes_sent": 0,
+              "total_bytes_received": 0,
+              "total_send_time_millis": 0,
+              "total_receive_time_millis": 0,
+              "ongoing_count": 0
+            }
+          },
+          "refresh": {
+            "total": 1435,
+            "total_time_in_millis": 32809,
+            "external_total": 1434,
+            "external_total_time_in_millis": 54241,
+            "listeners": 0
+          },
+          "flush": {
+            "total": 2,
+            "periodic": 1,
+            "total_time_in_millis": 2
+          },
+          "warmer": {
+            "current": 0,
+            "total": 1433,
+            "total_time_in_millis": 60
+          },
+          "query_cache": {
+            "memory_size_in_bytes": 0,
+            "total_count": 0,
+            "hit_count": 0,
+            "miss_count": 0,
+            "cache_size": 0,
+            "cache_count": 0,
+            "evictions": 0
+          },
+          "fielddata": {
+            "memory_size_in_bytes": 0,
+            "evictions": 0
+          },
+          "completion": {
+            "size_in_bytes": 0
+          },
+          "segments": {
+            "count": 6,
+            "memory_in_bytes": 0,
+            "terms_memory_in_bytes": 0,
+            "stored_fields_memory_in_bytes": 0,
+            "term_vectors_memory_in_bytes": 0,
+            "norms_memory_in_bytes": 0,
+            "points_memory_in_bytes": 0,
+            "doc_values_memory_in_bytes": 0,
+            "index_writer_memory_in_bytes": 0,
+            "version_map_memory_in_bytes": 0,
+            "fixed_bit_set_memory_in_bytes": 0,
+            "max_unsafe_auto_id_timestamp": -1,
+            "remote_store": {
+              "upload": {
+                "total_upload_size": {
+                  "started_bytes": 1971564161,
+                  "succeeded_bytes": 1971564161,
+                  "failed_bytes": 0
+                },
+                "refresh_size_lag": {
+                  "total_bytes": 0,
+                  "max_bytes": 0
+                },
+                "max_refresh_time_lag_in_millis": 0,
+                "total_time_spent_in_millis": 37610,
+                "pressure": {
+                  "total_rejections": 0
+                }
+              },
+              "download": {
+                "total_download_size": {
+                  "started_bytes": 0,
+                  "succeeded_bytes": 0,
+                  "failed_bytes": 0
+                },
+                "total_time_spent_in_millis": 0
+              }
+            },
+            "segment_replication": {
+              "max_bytes_behind": 0,
+              "total_bytes_behind": 0,
+              "max_replication_lag": 0
+            },
+            "file_sizes": {}
+          },
+          "translog": {
+            "operations": 1069,
+            "size_in_bytes": 305305,
+            "uncommitted_operations": 1069,
+            "uncommitted_size_in_bytes": 305305,
+            "earliest_last_modified_age": 3379,
+            "remote_store": {
+              "upload": {
+                "total_uploads": {
+                  "started": 2308,
+                  "failed": 0,
+                  "succeeded": 2308
+                },
+                "total_upload_size": {
+                  "started_bytes": 326984991,
+                  "failed_bytes": 0,
+                  "succeeded_bytes": 326984991
+                }
+              }
+            }
+          },
+          "request_cache": {
+            "memory_size_in_bytes": 0,
+            "evictions": 0,
+            "hit_count": 0,
+            "miss_count": 0
+          },
+          "recovery": {
+            "current_as_source": 0,
+            "current_as_target": 0,
+            "throttle_time_in_millis": 0
+          }
+        },
+        "total": {
+          "docs": {
+            "count": 2282138,
+            "deleted": 0
+          },
+          "store": {
+            "size_in_bytes": 513524168,
+            "reserved_in_bytes": 0
+          },
+          "indexing": {
+            "index_total": 1141069,
+            "index_time_in_millis": 16313,
+            "index_current": 0,
+            "index_failed": 0,
+            "delete_total": 0,
+            "delete_time_in_millis": 0,
+            "delete_current": 0,
+            "noop_update_total": 0,
+            "is_throttled": false,
+            "throttle_time_in_millis": 0,
+            "max_last_index_request_timestamp": 1786567973413
+          },
+          "get": {
+            "total": 0,
+            "getTime": "0s",
+            "time_in_millis": 0,
+            "exists_total": 0,
+            "exists_time_in_millis": 0,
+            "missing_total": 0,
+            "missing_time_in_millis": 0,
+            "current": 0
+          },
+          "search": {
+            "open_contexts": 0,
+            "query_total": 0,
+            "query_time_in_millis": 0,
+            "query_current": 0,
+            "query_failed": 0,
+            "concurrent_query_total": 0,
+            "concurrent_query_time_in_millis": 0,
+            "concurrent_query_current": 0,
+            "concurrent_avg_slice_count": 0.0,
+            "startree_query_total": 0,
+            "startree_query_time_in_millis": 0,
+            "startree_query_current": 0,
+            "startree_query_failed": 0,
+            "fetch_total": 0,
+            "fetch_time_in_millis": 0,
+            "fetch_current": 0,
+            "scroll_total": 0,
+            "scroll_time_in_millis": 0,
+            "scroll_current": 0,
+            "point_in_time_total": 0,
+            "point_in_time_time_in_millis": 0,
+            "point_in_time_current": 0,
+            "suggest_total": 0,
+            "suggest_time_in_millis": 0,
+            "suggest_current": 0,
+            "search_idle_reactivate_count_total": 0
+          },
+          "merges": {
+            "current": 0,
+            "current_docs": 0,
+            "current_size_in_bytes": 0,
+            "total": 166,
+            "total_time_in_millis": 66406,
+            "total_docs": 7162028,
+            "total_size_in_bytes": 1750793926,
+            "total_stopped_time_in_millis": 0,
+            "total_throttled_time_in_millis": 34293,
+            "total_auto_throttle_in_bytes": 13021663,
+            "unreferenced_file_cleanups_performed": 0,
+            "warmer": {
+              "total_invocations_count": 0,
+              "total_time_millis": 0,
+              "total_failure_count": 0,
+              "total_bytes_sent": 0,
+              "total_bytes_received": 0,
+              "total_send_time_millis": 0,
+              "total_receive_time_millis": 0,
+              "ongoing_count": 0
+            }
+          },
+          "refresh": {
+            "total": 3216,
+            "total_time_in_millis": 34265,
+            "external_total": 1434,
+            "external_total_time_in_millis": 54241,
+            "listeners": 0
+          },
+          "flush": {
+            "total": 4,
+            "periodic": 2,
+            "total_time_in_millis": 13
+          },
+          "warmer": {
+            "current": 0,
+            "total": 2850,
+            "total_time_in_millis": 118
+          },
+          "query_cache": {
+            "memory_size_in_bytes": 0,
+            "total_count": 0,
+            "hit_count": 0,
+            "miss_count": 0,
+            "cache_size": 0,
+            "cache_count": 0,
+            "evictions": 0
+          },
+          "fielddata": {
+            "memory_size_in_bytes": 0,
+            "evictions": 0
+          },
+          "completion": {
+            "size_in_bytes": 0
+          },
+          "segments": {
+            "count": 12,
+            "memory_in_bytes": 0,
+            "terms_memory_in_bytes": 0,
+            "stored_fields_memory_in_bytes": 0,
+            "term_vectors_memory_in_bytes": 0,
+            "norms_memory_in_bytes": 0,
+            "points_memory_in_bytes": 0,
+            "doc_values_memory_in_bytes": 0,
+            "index_writer_memory_in_bytes": 0,
+            "version_map_memory_in_bytes": 0,
+            "fixed_bit_set_memory_in_bytes": 0,
+            "max_unsafe_auto_id_timestamp": -1,
+            "remote_store": {
+              "upload": {
+                "total_upload_size": {
+                  "started_bytes": 1971564161,
+                  "succeeded_bytes": 1971564161,
+                  "failed_bytes": 0
+                },
+                "refresh_size_lag": {
+                  "total_bytes": 0,
+                  "max_bytes": 0
+                },
+                "max_refresh_time_lag_in_millis": 0,
+                "total_time_spent_in_millis": 37610,
+                "pressure": {
+                  "total_rejections": 0
+                }
+              },
+              "download": {
+                "total_download_size": {
+                  "started_bytes": 1971407646,
+                  "succeeded_bytes": 1971407646,
+                  "failed_bytes": 0
+                },
+                "total_time_spent_in_millis": 43652
+              }
+            },
+            "segment_replication": {
+              "max_bytes_behind": 0,
+              "total_bytes_behind": 0,
+              "max_replication_lag": 0
+            },
+            "file_sizes": {}
+          },
+          "translog": {
+            "operations": 1069,
+            "size_in_bytes": 305360,
+            "uncommitted_operations": 1069,
+            "uncommitted_size_in_bytes": 305360,
+            "earliest_last_modified_age": 3379,
+            "remote_store": {
+              "upload": {
+                "total_uploads": {
+                  "started": 2308,
+                  "failed": 0,
+                  "succeeded": 2308
+                },
+                "total_upload_size": {
+                  "started_bytes": 326984991,
+                  "failed_bytes": 0,
+                  "succeeded_bytes": 326984991
+                }
+              }
+            }
+          },
+          "request_cache": {
+            "memory_size_in_bytes": 0,
+            "evictions": 0,
+            "hit_count": 0,
+            "miss_count": 0
+          },
+          "recovery": {
+            "current_as_source": 0,
+            "current_as_target": 0,
+            "throttle_time_in_millis": 0
+          }
+        }
+      }
+    }
+  },
+  "container_resource_usage": {
+    "os-s1-data": {
+      "sample_count": 369,
+      "cpu_pct_avg": 10.16,
+      "cpu_pct_max": 84.94,
+      "mem_mb_avg": 1615.1,
+      "mem_mb_max": 1634.3
+    },
+    "os-s1-search": {
+      "sample_count": 369,
+      "cpu_pct_avg": 2.99,
+      "cpu_pct_max": 41.44,
+      "mem_mb_avg": 1560.7,
+      "mem_mb_max": 1581.1
+    }
+  },
+  "remote_store_nodes_stats_before": {
+    "_nodes": {
+      "total": 2,
+      "successful": 2,
+      "failed": 0
+    },
+    "cluster_name": "s1-shared-index",
+    "nodes": {
+      "JFWKXruQTJuISp7ELLBHvw": {
+        "timestamp": 1786566485682,
+        "name": "os-s1-search",
+        "transport_address": "172.18.0.4:9300",
+        "host": "172.18.0.4",
+        "ip": "172.18.0.4:9300",
+        "roles": [
+          "search"
+        ],
+        "attributes": {
+          "remote_store.repository.s1-repo.settings.path_style_access": "true",
+          "remote_store.repository.s1-repo.settings.region": "us-east-1",
+          "remote_store.repository.s1-repo.settings.endpoint": "http://minio:9000",
+          "remote_store.repository.s1-repo.settings.bucket": "opensearch-remote-store",
+          "remote_store.repository.s1-repo.type": "s3",
+          "remote_store.state.repository": "s1-repo",
+          "remote_store.repository.s1-repo.settings.base_path": "remote-store",
+          "shard_indexing_pressure_enabled": "true",
+          "remote_store.segment.repository": "s1-repo",
+          "remote_store.translog.repository": "s1-repo"
+        },
+        "indices": {
+          "segments": {
+            "count": 0,
+            "memory_in_bytes": 0,
+            "terms_memory_in_bytes": 0,
+            "stored_fields_memory_in_bytes": 0,
+            "term_vectors_memory_in_bytes": 0,
+            "norms_memory_in_bytes": 0,
+            "points_memory_in_bytes": 0,
+            "doc_values_memory_in_bytes": 0,
+            "index_writer_memory_in_bytes": 0,
+            "version_map_memory_in_bytes": 0,
+            "fixed_bit_set_memory_in_bytes": 0,
+            "max_unsafe_auto_id_timestamp": -9223372036854775808,
+            "remote_store": {
+              "upload": {
+                "total_upload_size": {
+                  "started_bytes": 0,
+                  "succeeded_bytes": 0,
+                  "failed_bytes": 0
+                },
+                "refresh_size_lag": {
+                  "total_bytes": 0,
+                  "max_bytes": 0
+                },
+                "max_refresh_time_lag_in_millis": 0,
+                "total_time_spent_in_millis": 0,
+                "pressure": {
+                  "total_rejections": 0
+                }
+              },
+              "download": {
+                "total_download_size": {
+                  "started_bytes": 0,
+                  "succeeded_bytes": 0,
+                  "failed_bytes": 0
+                },
+                "total_time_spent_in_millis": 0
+              }
+            },
+            "segment_replication": {
+              "max_bytes_behind": 0,
+              "total_bytes_behind": 0,
+              "max_replication_lag": 0
+            },
+            "file_sizes": {}
+          },
+          "status_counter": {
+            "doc_status": {
+              "success": 464,
+              "user_error": 0,
+              "system_failure": 0
+            },
+            "search_response_status": {
+              "success": 3,
+              "user_error": 0,
+              "system_failure": 0
+            }
+          }
+        },
+        "native_memory": {
+          "total_estimated_bytes": 237441024
+        }
+      },
+      "fOW7pg23TO6hVEXVlUER0w": {
+        "timestamp": 1786566485681,
+        "name": "os-s1-data",
+        "transport_address": "172.18.0.3:9300",
+        "host": "172.18.0.3",
+        "ip": "172.18.0.3:9300",
+        "roles": [
+          "cluster_manager",
+          "data",
+          "ingest"
+        ],
+        "attributes": {
+          "remote_store.repository.s1-repo.settings.path_style_access": "true",
+          "remote_store.repository.s1-repo.settings.region": "us-east-1",
+          "remote_store.repository.s1-repo.settings.endpoint": "http://minio:9000",
+          "remote_store.repository.s1-repo.settings.bucket": "opensearch-remote-store",
+          "remote_store.repository.s1-repo.type": "s3",
+          "remote_store.state.repository": "s1-repo",
+          "remote_store.repository.s1-repo.settings.base_path": "remote-store",
+          "shard_indexing_pressure_enabled": "true",
+          "remote_store.segment.repository": "s1-repo",
+          "remote_store.translog.repository": "s1-repo"
+        },
+        "indices": {
+          "segments": {
+            "count": 5,
+            "memory_in_bytes": 0,
+            "terms_memory_in_bytes": 0,
+            "stored_fields_memory_in_bytes": 0,
+            "term_vectors_memory_in_bytes": 0,
+            "norms_memory_in_bytes": 0,
+            "points_memory_in_bytes": 0,
+            "doc_values_memory_in_bytes": 0,
+            "index_writer_memory_in_bytes": 0,
+            "version_map_memory_in_bytes": 0,
+            "fixed_bit_set_memory_in_bytes": 0,
+            "max_unsafe_auto_id_timestamp": -1,
+            "remote_store": {
+              "upload": {
+                "total_upload_size": {
+                  "started_bytes": 418132,
+                  "succeeded_bytes": 418132,
+                  "failed_bytes": 0
+                },
+                "refresh_size_lag": {
+                  "total_bytes": 0,
+                  "max_bytes": 0
+                },
+                "max_refresh_time_lag_in_millis": 0,
+                "total_time_spent_in_millis": 697,
+                "pressure": {
+                  "total_rejections": 0
+                }
+              },
+              "download": {
+                "total_download_size": {
+                  "started_bytes": 0,
+                  "succeeded_bytes": 0,
+                  "failed_bytes": 0
+                },
+                "total_time_spent_in_millis": 0
+              }
+            },
+            "segment_replication": {
+              "max_bytes_behind": 0,
+              "total_bytes_behind": 0,
+              "max_replication_lag": 0
+            },
+            "file_sizes": {}
+          },
+          "status_counter": {
+            "doc_status": {
+              "success": 939,
+              "user_error": 0,
+              "system_failure": 0
+            },
+            "search_response_status": {
+              "success": 7,
+              "user_error": 2,
+              "system_failure": 1
+            }
+          }
+        },
+        "native_memory": {
+          "total_estimated_bytes": 279003136
+        }
+      }
+    }
+  },
+  "remote_store_nodes_stats_after": {
+    "_nodes": {
+      "total": 2,
+      "successful": 2,
+      "failed": 0
+    },
+    "cluster_name": "s1-shared-index",
+    "nodes": {
+      "JFWKXruQTJuISp7ELLBHvw": {
+        "timestamp": 1786567976203,
+        "name": "os-s1-search",
+        "transport_address": "172.18.0.4:9300",
+        "host": "172.18.0.4",
+        "ip": "172.18.0.4:9300",
+        "roles": [
+          "search"
+        ],
+        "attributes": {
+          "remote_store.repository.s1-repo.settings.path_style_access": "true",
+          "remote_store.repository.s1-repo.settings.region": "us-east-1",
+          "remote_store.repository.s1-repo.settings.endpoint": "http://minio:9000",
+          "remote_store.repository.s1-repo.settings.bucket": "opensearch-remote-store",
+          "remote_store.repository.s1-repo.type": "s3",
+          "remote_store.state.repository": "s1-repo",
+          "remote_store.repository.s1-repo.settings.base_path": "remote-store",
+          "shard_indexing_pressure_enabled": "true",
+          "remote_store.segment.repository": "s1-repo",
+          "remote_store.translog.repository": "s1-repo"
+        },
+        "indices": {
+          "segments": {
+            "count": 6,
+            "memory_in_bytes": 0,
+            "terms_memory_in_bytes": 0,
+            "stored_fields_memory_in_bytes": 0,
+            "term_vectors_memory_in_bytes": 0,
+            "norms_memory_in_bytes": 0,
+            "points_memory_in_bytes": 0,
+            "doc_values_memory_in_bytes": 0,
+            "index_writer_memory_in_bytes": 0,
+            "version_map_memory_in_bytes": 0,
+            "fixed_bit_set_memory_in_bytes": 0,
+            "max_unsafe_auto_id_timestamp": -9223372036854775808,
+            "remote_store": {
+              "upload": {
+                "total_upload_size": {
+                  "started_bytes": 0,
+                  "succeeded_bytes": 0,
+                  "failed_bytes": 0
+                },
+                "refresh_size_lag": {
+                  "total_bytes": 0,
+                  "max_bytes": 0
+                },
+                "max_refresh_time_lag_in_millis": 0,
+                "total_time_spent_in_millis": 0,
+                "pressure": {
+                  "total_rejections": 0
+                }
+              },
+              "download": {
+                "total_download_size": {
+                  "started_bytes": 1971407646,
+                  "succeeded_bytes": 1971407646,
+                  "failed_bytes": 0
+                },
+                "total_time_spent_in_millis": 43652
+              }
+            },
+            "segment_replication": {
+              "max_bytes_behind": 0,
+              "total_bytes_behind": 0,
+              "max_replication_lag": 0
+            },
+            "file_sizes": {}
+          },
+          "status_counter": {
+            "doc_status": {
+              "success": 464,
+              "user_error": 0,
+              "system_failure": 0
+            },
+            "search_response_status": {
+              "success": 3,
+              "user_error": 0,
+              "system_failure": 0
+            }
+          }
+        },
+        "native_memory": {
+          "total_estimated_bytes": 273424384
+        }
+      },
+      "fOW7pg23TO6hVEXVlUER0w": {
+        "timestamp": 1786567976203,
+        "name": "os-s1-data",
+        "transport_address": "172.18.0.3:9300",
+        "host": "172.18.0.3",
+        "ip": "172.18.0.3:9300",
+        "roles": [
+          "cluster_manager",
+          "data",
+          "ingest"
+        ],
+        "attributes": {
+          "remote_store.repository.s1-repo.settings.path_style_access": "true",
+          "remote_store.repository.s1-repo.settings.region": "us-east-1",
+          "remote_store.repository.s1-repo.settings.endpoint": "http://minio:9000",
+          "remote_store.repository.s1-repo.settings.bucket": "opensearch-remote-store",
+          "remote_store.repository.s1-repo.type": "s3",
+          "remote_store.state.repository": "s1-repo",
+          "remote_store.repository.s1-repo.settings.base_path": "remote-store",
+          "shard_indexing_pressure_enabled": "true",
+          "remote_store.segment.repository": "s1-repo",
+          "remote_store.translog.repository": "s1-repo"
+        },
+        "indices": {
+          "segments": {
+            "count": 11,
+            "memory_in_bytes": 0,
+            "terms_memory_in_bytes": 0,
+            "stored_fields_memory_in_bytes": 0,
+            "term_vectors_memory_in_bytes": 0,
+            "norms_memory_in_bytes": 0,
+            "points_memory_in_bytes": 0,
+            "doc_values_memory_in_bytes": 0,
+            "index_writer_memory_in_bytes": 0,
+            "version_map_memory_in_bytes": 0,
+            "fixed_bit_set_memory_in_bytes": 0,
+            "max_unsafe_auto_id_timestamp": -1,
+            "remote_store": {
+              "upload": {
+                "total_upload_size": {
+                  "started_bytes": 1971982517,
+                  "succeeded_bytes": 1971982517,
+                  "failed_bytes": 0
+                },
+                "refresh_size_lag": {
+                  "total_bytes": 0,
+                  "max_bytes": 0
+                },
+                "max_refresh_time_lag_in_millis": 0,
+                "total_time_spent_in_millis": 38302,
+                "pressure": {
+                  "total_rejections": 0
+                }
+              },
+              "download": {
+                "total_download_size": {
+                  "started_bytes": 0,
+                  "succeeded_bytes": 0,
+                  "failed_bytes": 0
+                },
+                "total_time_spent_in_millis": 0
+              }
+            },
+            "segment_replication": {
+              "max_bytes_behind": 0,
+              "total_bytes_behind": 0,
+              "max_replication_lag": 0
+            },
+            "file_sizes": {}
+          },
+          "status_counter": {
+            "doc_status": {
+              "success": 1142008,
+              "user_error": 0,
+              "system_failure": 0
+            },
+            "search_response_status": {
+              "success": 7,
+              "user_error": 2,
+              "system_failure": 1
+            }
+          }
+        },
+        "native_memory": {
+          "total_estimated_bytes": 300929024
+        }
+      }
+    }
+  },
+  "system_info": {
+    "python_version": "3.14.6",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "hostname": "marcelot-DY7DDFLY5Y",
+    "pandas_version": "2.3.3",
+    "numpy_version": "2.5.2",
+    "pyarrow_version": "25.0.0",
+    "process_peak_rss_mb": 1190.2
+  },
+  "created_at": "2026-08-12T20:52:56Z"
+}

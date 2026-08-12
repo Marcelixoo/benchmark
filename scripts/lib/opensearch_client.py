@@ -63,3 +63,22 @@ def fetch_stats(os_client: OpenSearch, index_name: str) -> dict[str, Any] | None
         return os_client.indices.stats(index=index_name)
     except Exception:
         return None
+
+
+def remote_store_nodes_stats(os_client: OpenSearch) -> dict[str, Any] | None:
+    """Raw Nodes Stats API response, scoped to what's relevant for S1's
+    remote-store upload/download activity. Returned as-is (not pre-parsed into
+    specific counters) since consumers should read the exact fields they need
+    directly from this raw payload.
+
+    Verified against a live S1 cluster (OpenSearch 3.7.0): `segments` is not a
+    valid top-level Nodes Stats metric (`/_nodes/stats/indices,segments` returns
+    a 400 "unrecognized metric: [segments]"); it's an indices *sub*-metric, so
+    the correct path is `/_nodes/stats/indices/segments`. The remote-store
+    upload/download counters live at
+    `nodes.<node_id>.indices.segments.remote_store.{upload,download}`.
+    """
+    try:
+        return os_client.transport.perform_request("GET", "/_nodes/stats/indices/segments")
+    except Exception:
+        return None
