@@ -1,0 +1,137 @@
+name: benchmark-s1
+
+# S1 — Shared Index: remote-backed storage (segment replication + S3-compatible remote
+# store for segments/translog/cluster state) with a dedicated data/indexing node and a
+# dedicated node.roles:[search] node serving a search replica, strict search-replica
+# routing enabled. See ../../README.md "Search infrastructure" section.
+
+x-opensearch-common: &opensearch-common
+  build:
+    context: .
+    dockerfile: opensearch-s1.Dockerfile
+    args:
+      OPENSEARCH_VERSION: ${OPENSEARCH_VERSION}
+  environment: &opensearch-common-env
+    cluster.name: s1-shared-index
+    discovery.seed_hosts: os-s1-data,os-s1-search
+    # Only os-s1-data carries the cluster_manager role (os-s1-search is search-only,
+    # not cluster-manager-eligible), so it alone forms the initial bootstrap quorum —
+    # listing a non-eligible node here stalls bootstrap indefinitely. os-s1-search
+    # joins afterwards via discovery.seed_hosts, no special bootstrap role needed.
+    cluster.initial_cluster_manager_nodes: os-s1-data
+    bootstrap.memory_lock: "true"
+    OPENSEARCH_JAVA_OPTS: "-Xms${OS_JAVA_HEAP} -Xmx${OS_JAVA_HEAP}"
+    DISABLE_INSTALL_DEMO_CONFIG: "true"
+    DISABLE_SECURITY_PLUGIN: "true"
+    MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+    MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    # Remote-backed storage: cluster.remote_store.state.enabled publishes cluster state
+    # to MinIO. There is no cluster-wide "enable segment/translog remote store" setting
+    # in 3.7.0 — we tried cluster.remote_store.segment.enabled/.translog.enabled (fails:
+    # "unknown setting") and cluster.remote_store.enabled (also fails: "unknown setting,
+    # did you mean cluster.remote_store.state.enabled?"). Once every node carries the
+    # remote_store.* node attributes below, the cluster is bootstrapped as a
+    # remote-store cluster and index.remote_store.enabled/.segment.repository/
+    # .translog.repository become "private" (auto-derived, non-settable) index settings
+    # — confirmed by a 400 validation_exception when we tried to set them explicitly on
+    # create_index. So no explicit remote_store activation is needed anywhere else;
+    # scripts/opensearch/index_spec.py only sets index.replication.type: SEGMENT
+    # (required alongside remote store) for S1's index.
+    cluster.remote_store.state.enabled: "true"
+    node.attr.remote_store.segment.repository: s1-repo
+    node.attr.remote_store.translog.repository: s1-repo
+    node.attr.remote_store.state.repository: s1-repo
+    node.attr.remote_store.repository.s1-repo.type: s3
+    node.attr.remote_store.repository.s1-repo.settings.bucket: ${MINIO_BUCKET}
+    node.attr.remote_store.repository.s1-repo.settings.base_path: remote-store
+    node.attr.remote_store.repository.s1-repo.settings.region: ${S3_REGION}
+    node.attr.remote_store.repository.s1-repo.settings.endpoint: http://minio:9000
+    node.attr.remote_store.repository.s1-repo.settings.path_style_access: "true"
+    # Only used by the dedicated search node's search-replica requests; harmless on the
+    # data node, but declared once here so it's identical on every node.
+    cluster.routing.search_replica.strict: "true"
+  ulimits:
+    memlock: { soft: -1, hard: -1 }
+    nofile: { soft: 65536, hard: 65536 }
+  deploy:
+    resources:
+      limits:
+        cpus: "${OS_CONTAINER_CPU_LIMIT}"
+        memory: "${OS_CONTAINER_MEM_LIMIT}"
+  healthcheck:
+    test: ["CMD-SHELL", "curl -s http://localhost:9200/_cluster/health | grep -q '\"status\"'"]
+    interval: 10s
+    timeout: 5s
+    retries: 20
+  networks: [s1-net]
+  depends_on:
+    minio-init:
+      condition: service_completed_successfully
+
+services:
+  minio:
+    image: minio/minio:latest
+    container_name: minio-s1
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    volumes: [minio-data:/data]
+    # Host port 9000 is remapped to 9010: on this machine Zscaler's local proxy
+    # already listens on 127.0.0.1:9000, so binding container port 9000 to host 9000
+    # fails. Container-internal port stays 9000 (minio-init.sh and the OpenSearch
+    # remote_store endpoint both talk to MinIO over the docker network, unaffected).
+    ports: ["9010:9000", "9001:9001"]
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks: [s1-net]
+
+  minio-init:
+    image: minio/mc:latest
+    container_name: minio-init-s1
+    depends_on:
+      minio:
+        condition: service_healthy
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_BUCKET: ${MINIO_BUCKET}
+    entrypoint: ["/bin/sh", "/minio-init.sh"]
+    volumes: ["./minio-init.sh:/minio-init.sh:ro"]
+    networks: [s1-net]
+
+  os-s1-data:
+    <<: *opensearch-common
+    container_name: os-s1-data
+    environment:
+      <<: *opensearch-common-env
+      node.name: os-s1-data
+      node.roles: cluster_manager,data,ingest
+    volumes: [os-s1-data-vol:/usr/share/opensearch/data]
+    ports: ["9202:9200"]
+
+  os-s1-search:
+    <<: *opensearch-common
+    container_name: os-s1-search
+    environment:
+      <<: *opensearch-common-env
+      node.name: os-s1-search
+      node.roles: search
+    volumes: [os-s1-search-vol:/usr/share/opensearch/data]
+    ports: ["9203:9200"]
+    depends_on:
+      os-s1-data:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+
+volumes:
+  minio-data:
+  os-s1-data-vol:
+  os-s1-search-vol:
+
+networks:
+  s1-net:

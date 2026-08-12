@@ -1,4 +1,5 @@
 .env
+infra/.env
 .venv/
 .venv.libressl-bak/
 __pycache__/
@@ -12,3 +13,7 @@ data/*.csv
 
 # Small provenance/report JSON+MD files (split_metadata.json, query_metadata.json,
 # data/reports/*) are intentionally tracked — they're the thesis's exact-stats deliverables.
+
+# repository-s3 plugin zip, fetched on the host and COPY'd into opensearch-s1.Dockerfile
+# (see README "Search infrastructure") — large binary, regenerable via curl.
+infra/s1/repository-s3-*.zip

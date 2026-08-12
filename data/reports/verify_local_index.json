@@ -1,0 +1,103 @@
+{
+  "system": "local_index",
+  "all_passed": true,
+  "checks": [
+    {
+      "name": "cluster_health_not_red",
+      "passed": true,
+      "detail": {
+        "cluster_name": "l1-local-index",
+        "status": "green",
+        "timed_out": false,
+        "number_of_nodes": 2,
+        "number_of_data_nodes": 2,
+        "discovered_master": true,
+        "discovered_cluster_manager": true,
+        "active_primary_shards": 3,
+        "active_shards": 6,
+        "relocating_shards": 0,
+        "initializing_shards": 0,
+        "unassigned_shards": 0,
+        "delayed_unassigned_shards": 0,
+        "number_of_pending_tasks": 0,
+        "number_of_in_flight_fetch": 0,
+        "task_max_waiting_in_queue_millis": 0,
+        "active_shards_percent_as_number": 100.0
+      }
+    },
+    {
+      "name": "no_unassigned_shards",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "remote_store_disabled",
+      "passed": true,
+      "detail": "false"
+    },
+    {
+      "name": "search_node_and_search_replica_present",
+      "passed": true,
+      "detail": "not applicable for local_index"
+    },
+    {
+      "name": "strict_search_replica_routing",
+      "passed": true,
+      "detail": "not applicable for local_index"
+    },
+    {
+      "name": "mappings_match_shared_spec",
+      "passed": true,
+      "detail": {
+        "expected_fields": [
+          "asin",
+          "category_id",
+          "isBestSeller",
+          "price",
+          "reviews",
+          "stars",
+          "title"
+        ],
+        "actual_fields": [
+          "asin",
+          "category_id",
+          "isBestSeller",
+          "price",
+          "reviews",
+          "stars",
+          "title"
+        ]
+      }
+    },
+    {
+      "name": "document_count_matches_indexed",
+      "passed": true,
+      "detail": {
+        "expected": 5,
+        "actual": 5
+      }
+    },
+    {
+      "name": "query_smoke_test_succeeds",
+      "passed": true,
+      "detail": {
+        "hits_returned": 5
+      }
+    },
+    {
+      "name": "resource_limits_applied",
+      "passed": true,
+      "detail": {
+        "os-l1-1": {
+          "NanoCpus": 2000000000,
+          "Memory": 2684354560
+        },
+        "os-l1-2": {
+          "NanoCpus": 2000000000,
+          "Memory": 2684354560
+        }
+      }
+    }
+  ],
+  "created_at": "2026-08-12T16:40:17Z"
+}

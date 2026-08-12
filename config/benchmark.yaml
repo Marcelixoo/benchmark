@@ -30,19 +30,25 @@ workload:
   smoke_test_query_count: 1000
   smoke_test_sample_inspect_count: 20
 
-# Local/Shared Index services are not built yet. base_url must be filled in
-# (e.g. "http://localhost:8080") before scripts/smoke_test.py,
-# scripts/index_initial_corpus.py, or scripts/feed_write_workload.py can run.
-# Until then, those scripts exit early with an explicit message instead of
-# silently doing nothing.
+# Both systems are OpenSearch (see infra/l1, infra/s1 and README "Search
+# infrastructure"), pinned to the same OPENSEARCH_VERSION (infra/.env). Bring
+# up the relevant compose stack, then fill in write_base_url/search_base_url
+# below — until then scripts/smoke_test.py, scripts/index_initial_corpus.py,
+# scripts/feed_write_workload.py, and scripts/opensearch/create_index.py exit
+# early with an explicit blocker message instead of silently doing nothing.
+#
+# local_index (L1): both nodes do indexing and search, so write_base_url and
+# search_base_url are the same cluster (any node's published port works).
+# shared_index (S1): write_base_url must point at the data node (os-s1-data,
+# port 9202) and search_base_url at the dedicated search node (os-s1-search,
+# port 9203) — this mirrors the architecture's node-role split at the client
+# level rather than relying solely on server-side strict routing.
 systems:
   local_index:
-    base_url: null
-    index_path: "/index"
-    search_path: "/search"
-    stats_path: "/stats"
+    write_base_url: "http://localhost:9200"
+    search_base_url: "http://localhost:9200"
+    index_name: "products"
   shared_index:
-    base_url: null
-    index_path: "/index"
-    search_path: "/search"
-    stats_path: "/stats"
+    write_base_url: "http://localhost:9202" # os-s1-data
+    search_base_url: "http://localhost:9203" # os-s1-search
+    index_name: "products"

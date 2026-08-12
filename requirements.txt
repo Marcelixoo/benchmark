@@ -7,3 +7,4 @@ python-dotenv==1.2.2
 ipykernel==7.3.0
 pyyaml==6.0.3
 requests==2.34.2
+opensearch-py==2.8.0

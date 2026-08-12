@@ -13,7 +13,7 @@ import pandas as pd
 
 from scripts.lib import report
 from scripts.lib.config import data_dir, load_config, reports_dir
-from scripts.lib.http_client import SystemNotConfiguredError, require_base_url, search
+from scripts.lib.opensearch_client import SystemNotConfiguredError, client, require_search_url, search as os_search
 
 
 def main() -> None:
@@ -26,9 +26,12 @@ def main() -> None:
     system_config = config["systems"][args.system]
 
     try:
-        base_url = require_base_url(system_config, args.system)
+        search_url = require_search_url(system_config, args.system)
     except SystemNotConfiguredError as e:
         raise SystemExit(f"Blocker: {e}") from None
+
+    os_client = client(search_url)
+    index_name = system_config["index_name"]
 
     d_dir = data_dir(config)
     fixed_size = config["query_set"]["fixed_size"]
@@ -45,10 +48,8 @@ def main() -> None:
     inspect_count = config["workload"]["smoke_test_sample_inspect_count"]
 
     for i, row in enumerate(sample_df.itertuples(index=False)):
-        resp = search(base_url, system_config["search_path"], row.query_text)
         try:
-            payload = resp.json()
-            results = payload.get("results", [])
+            results = os_search(os_client, index_name, row.query_text)
         except Exception:
             results = []
         result_counts.append(len(results))
@@ -58,7 +59,7 @@ def main() -> None:
     counts = np.array(result_counts)
     summary = {
         "system": args.system,
-        "base_url": base_url,
+        "search_base_url": search_url,
         "queries_run": len(sample_df),
         "pct_with_at_least_one_result": round(100 * float((counts >= 1).mean()), 2) if len(counts) else None,
         "zero_result_rate_pct": round(100 * float((counts == 0).mean()), 2) if len(counts) else None,

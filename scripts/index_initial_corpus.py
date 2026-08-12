@@ -11,7 +11,7 @@ import pandas as pd
 
 from scripts.lib import report, system_info
 from scripts.lib.config import data_dir, load_config, reports_dir
-from scripts.lib.http_client import SystemNotConfiguredError, fetch_stats, index_batch, require_base_url
+from scripts.lib.opensearch_client import SystemNotConfiguredError, client, fetch_stats, index_batch, require_write_url
 
 
 def main() -> None:
@@ -23,9 +23,12 @@ def main() -> None:
     system_config = config["systems"][args.system]
 
     try:
-        base_url = require_base_url(system_config, args.system)
+        write_url = require_write_url(system_config, args.system)
     except SystemNotConfiguredError as e:
         raise SystemExit(f"Blocker: {e}") from None
+
+    os_client = client(write_url)
+    index_name = system_config["index_name"]
 
     d_dir = data_dir(config)
     corpus_path = d_dir / "corpus_initial.parquet"
@@ -35,21 +38,19 @@ def main() -> None:
     df = pd.read_parquet(corpus_path)
     batch_size = config["workload"]["index_batch_size"]
 
-    print(f"Indexing {len(df):,} documents into '{args.system}' at {base_url} (batch_size={batch_size}) ...")
+    print(f"Indexing {len(df):,} documents into '{args.system}' at {write_url} (batch_size={batch_size}) ...")
     start = time.perf_counter()
     indexed = 0
     for start_i in range(0, len(df), batch_size):
         batch = df.iloc[start_i : start_i + batch_size].to_dict(orient="records")
-        resp = index_batch(base_url, system_config["index_path"], batch)
-        resp.raise_for_status()
-        indexed += len(batch)
+        indexed += index_batch(os_client, index_name, "asin", batch)
     duration_s = time.perf_counter() - start
 
-    stats = fetch_stats(base_url, system_config["stats_path"])
+    stats = fetch_stats(os_client, index_name)
 
     result = {
         "system": args.system,
-        "base_url": base_url,
+        "write_base_url": write_url,
         "documents_indexed": indexed,
         "duration_s": round(duration_s, 3),
         "docs_per_s": round(indexed / duration_s, 2) if duration_s > 0 else None,

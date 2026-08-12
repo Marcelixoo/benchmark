@@ -53,19 +53,20 @@ python -m scripts.prepare_queries         # data/queries_full_corpus_relevant.pa
 python -m scripts.validate_compatibility  # data/reports/compatibility_report.json
 ```
 
-Then, once a Local Index or Shared Index service exists and its URL is filled
-into `config/benchmark.yaml` (`systems.local_index.base_url` /
-`systems.shared_index.base_url`, both `null` today):
+Then, once the relevant OpenSearch stack is up (see "Search infrastructure"
+below):
 
 ```bash
+python -m scripts.opensearch.create_index --system local_index
 python -m scripts.smoke_test --system local_index
 python -m scripts.index_initial_corpus --system local_index
 python -m scripts.feed_write_workload --system local_index
 ```
 
-(repeat with `--system shared_index`). Until `base_url` is configured, these
-three scripts exit immediately with a `Blocker: ...` message rather than
-running against a stand-in — verified during this data-prep pass.
+(repeat with `--system shared_index`). Before infra existed, these scripts
+exited immediately with a `Blocker: ...` message instead of running against a
+stand-in — that behavior is preserved for any system left unconfigured in
+`config/benchmark.yaml`.
 
 ## Results (this run, seed=42)
 
@@ -130,17 +131,134 @@ alignment between the two independently-scraped datasets:
 > is unchanged and still ID-membership-only.
 
 
-### Smoke test, initial indexing, write-feed
+### Search infrastructure verification
 
-Not run — `systems.local_index.base_url` and `systems.shared_index.base_url`
-are both `null` in `config/benchmark.yaml` because no Local/Shared Index
-service exists in this repo yet. Each of the three scripts was verified to
-exit immediately with an explicit blocker message
-(`Blocker: '<system>' has no base_url configured...`) rather than silently
-no-op'ing or running against a placeholder. Fill in a `base_url` once a
-service exists, then re-run the "Reproduction commands" second block above.
+Both stacks (see "Search infrastructure" below) were brought up and passed
+all 9 automated `verify_cluster.py` checks — see
+`data/reports/verify_local_index.json` / `verify_shared_index.json`. This
+confirms the infrastructure is ready for the benchmark; it does not itself
+constitute a benchmark run. `create_index.py`, `index_initial_corpus.py`,
+`feed_write_workload.py`, and `smoke_test.py` are wired up against real
+`write_base_url`/`search_base_url` endpoints in `config/benchmark.yaml` but
+have not yet been run against the full 1.14M-row corpus — that's the next
+phase, not part of this data-prep/infra pass.
 
-## Data-prep blockers encountered (for the record)
+## Search infrastructure (L1 vs S1)
+
+Both architectures under test are **OpenSearch 3.7.0** (pinned once in
+`infra/.env`, never bumped mid-experiment), so the comparison isolates the
+storage/compute architecture variable rather than comparing unrelated search
+engines:
+
+- **L1 — Local Index** (`infra/l1/docker-compose.yml`): an ordinary 2-node
+  cluster. Both nodes do indexing and search, durable Lucene/translog data
+  lives on node-local Docker volumes, remote-backed storage is explicitly
+  disabled (`cluster.remote_store.state.enabled: "false"`). Shards:
+  `number_of_shards: 1`, `number_of_replicas: 1` → 2 shard copies, both
+  regular read/write replicas.
+- **S1 — Shared Index** (`infra/s1/docker-compose.yml`): a remote-store
+  cluster — segment replication + S3-compatible remote store (MinIO, per the
+  explicit "MinIO if stable" fallback — not real AWS S3) for segments,
+  translog, and cluster state. `os-s1-data` is the dedicated indexing/data
+  node (`cluster_manager,data,ingest`); `os-s1-search` is a dedicated
+  `node.roles: [search]` node serving 1 OpenSearch search replica, with
+  `cluster.routing.search_replica.strict: "true"` so search traffic can only
+  land on the search replica, never the primary. Shards:
+  `number_of_shards: 1`, `number_of_replicas: 0`,
+  `number_of_search_replicas: 1` → also 2 shard copies, same total count as
+  L1, differing only in role split (regular replica vs. dedicated search
+  replica) — so shard count doesn't confound the comparison.
+
+Both stacks share identical mappings/analyzers (`scripts/opensearch/index_spec.py`,
+one definition reused by both), identical shard count, identical refresh
+interval (OpenSearch default, unmodified in either compose file), and
+identical per-node resource limits (`OS_CONTAINER_CPU_LIMIT`,
+`OS_CONTAINER_MEM_LIMIT`, `OS_JAVA_HEAP` in `infra/.env`). The security plugin
+is disabled on all four nodes, symmetrically — a lab-simplicity decision
+applied identically to both systems, not a confound.
+
+**Resource sizing:** Docker Desktop's VM on this machine caps out at ~7.75GB
+regardless of host RAM (`docker info` → `MemTotal: 8319213568`), so L1 and S1
+are sized to each fit that cap independently (2 CPU / 2.5GB per node); they
+are not run concurrently — only one architecture is benchmarked at a time
+anyway, since running both simultaneously would itself confound CPU
+measurements. Raising Docker Desktop's memory limit (Resources → Memory) is a
+manual step if a larger symmetric budget is ever needed.
+
+**Locust is not included** in either compose file, despite appearing in the
+original topology sketch — the write/search load generation in this repo is
+driven by `scripts/feed_write_workload.py` and `scripts/smoke_test.py`
+directly against `write_base_url`/`search_base_url`, so a separate load-gen
+service would have been unused scaffolding.
+
+### Bring-up / verify / teardown
+
+```bash
+docker compose --env-file infra/.env -f infra/l1/docker-compose.yml up -d
+python -m scripts.opensearch.verify_cluster --system local_index
+docker compose --env-file infra/.env -f infra/l1/docker-compose.yml down
+
+docker compose --env-file infra/.env -f infra/s1/docker-compose.yml up -d
+python -m scripts.opensearch.verify_cluster --system shared_index
+docker compose --env-file infra/.env -f infra/s1/docker-compose.yml down
+```
+
+`verify_cluster.py` implements the pre-experiment checklist as 9 automated
+checks against a live cluster (cluster health, unassigned shards, remote
+store enabled/disabled as expected, search-node + search-replica present
+(S1), strict search-replica routing (S1), mapping parity, document count
+parity through a throwaway test index, an end-to-end query, and
+`docker inspect`-confirmed resource limits) — it writes
+`data/reports/verify_<system>.json` and exits non-zero on any failing check
+rather than printing a false green summary. Current result: **all 9 checks
+pass for both `local_index` and `shared_index`**, re-verified together under
+the same script version (the earlier L1 run predated two check-implementation
+fixes below, so it was re-run to confirm those fixes didn't change the
+result).
+
+### Corrections discovered during setup (verification, not assumption)
+
+The plan flagged the search-replica feature's stability as something to
+verify rather than assume; two more mechanism-level corrections turned up
+during actual bring-up, in the same spirit — none of them changed the
+intended architecture, only how it's expressed to OpenSearch 3.7.0:
+
+- **No cluster-wide remote-store toggle for segments/translog.**
+  `cluster.remote_store.segment.enabled`, `cluster.remote_store.translog.enabled`,
+  and even a guessed `cluster.remote_store.enabled` all fail bootstrap with
+  `SettingsException: unknown setting`. The only real cluster-level remote
+  store setting in 3.7.0 is `cluster.remote_store.state.enabled` (cluster
+  state only). Segment/translog remote store is instead activated implicitly:
+  once every node carries matching `node.attr.remote_store.*` attributes, the
+  cluster becomes a remote-store cluster and `index.remote_store.enabled` /
+  `.segment.repository` / `.translog.repository` become **private** (derived,
+  read-only) index settings — attempting to set them explicitly on
+  `indices.create` fails with a 400 `validation_exception`
+  ("private index setting ... can not be set explicitly"). S1's index only
+  needs to set `index.replication.type: SEGMENT` explicitly; remote store
+  itself comes from the node attributes.
+- **Single-node bootstrap quorum.** `cluster.initial_cluster_manager_nodes`
+  must list only cluster-manager-*eligible* nodes. Listing `os-s1-search` (a
+  `node.roles: [search]`-only node, not eligible) alongside `os-s1-data`
+  deadlocked bootstrap: `os-s1-data` alone could never reach quorum, and
+  `os-s1-search` never started because it `depends_on: os-s1-data:
+  condition: service_healthy`. Fixed by listing only `os-s1-data`.
+
+### Other environment-specific notes
+
+- **Corporate TLS interception** on this network makes `opensearch-plugin
+  install repository-s3` fail cert validation inside a fresh container (the
+  host's `curl` trusts an injected root CA that a container's JVM truststore
+  doesn't). Fixed, per an explicit choice among reported options, by
+  downloading `repository-s3-3.7.0.zip` on the host and installing it from
+  `file:///tmp/repository-s3.zip` in `infra/s1/opensearch-s1.Dockerfile`
+  instead of fetching it during the build.
+- **MinIO's host port is remapped to 9010** (`9010:9000` in
+  `infra/s1/docker-compose.yml`) because this network's Zscaler tunnel
+  already listens on host port 9000. The container-internal port, and every
+  in-cluster reference to `http://minio:9000`, is unaffected.
+
+
 
 Downloading `abhishekmungoli/amazon-query-product-search` (a ~1.54 GB
 archive) failed 4 times in a row with 4 distinct transport-level errors
@@ -159,17 +277,29 @@ was fixed to scan both formats before any dedup/split logic ran.
 ## Layout
 
 ```
-config/benchmark.yaml            # single source of truth: seed, dataset handles, paths, sizes, systems.*.base_url
+config/benchmark.yaml            # single source of truth: seed, dataset handles, paths, sizes, systems.*.write_base_url/search_base_url
+infra/
+  .env                            # OPENSEARCH_VERSION pin, MinIO creds (lab-only), container resource limits — shared by both compose files
+  l1/docker-compose.yml           # L1: 2-node local OpenSearch cluster, remote store disabled
+  s1/
+    docker-compose.yml            # S1: remote-store OpenSearch cluster (data node + dedicated search node) + MinIO
+    opensearch-s1.Dockerfile      # adds repository-s3 plugin (from a host-fetched zip, see "Search infrastructure")
+    os-entrypoint.sh              # seeds MinIO S3 credentials into the OpenSearch keystore before handoff
+    minio-init.sh                 # one-shot: creates the MinIO bucket via `mc`
 scripts/
-  lib/                            # config, kaggle_auth, products, queries, report, http_client, system_info
+  lib/                            # config, kaggle_auth, products, queries, report, opensearch_client, system_info
+  opensearch/
+    index_spec.py                 # shared `products` mapping + per-system index settings (L1 vs S1)
+    create_index.py               # `python -m scripts.opensearch.create_index --system local_index|shared_index`
+    verify_cluster.py             # `python -m scripts.opensearch.verify_cluster --system ...` — 9-point pre-experiment checklist
   inspect_products.py             # task 1 (products)
   inspect_queries.py              # task 1 (queries)
   prepare_products.py             # task 2: dedup + 80/20 split (run before prepare_queries.py)
   prepare_queries.py              # task 3: corpus-relevance filter + locale filter + dedup + fixed sample
   validate_compatibility.py       # task 4a: ID overlap measurement
-  smoke_test.py                   # task 4b: needs systems.<name>.base_url
-  index_initial_corpus.py         # task 5/6: needs systems.<name>.base_url
-  feed_write_workload.py          # task 5: needs systems.<name>.base_url
+  smoke_test.py                   # task 4b: needs systems.<name>.search_base_url
+  index_initial_corpus.py         # task 5/6: needs systems.<name>.write_base_url
+  feed_write_workload.py          # task 5: needs systems.<name>.write_base_url
 data/                             # generated parquet/JSON outputs (gitignored except *.json under data/ and data/reports/)
 notebooks/explore_and_split.ipynb # earlier exploratory/EDA companion notebook (products only); scripts/ is the canonical, reproducible path
 ```

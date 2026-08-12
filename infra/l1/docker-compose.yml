@@ -1,0 +1,60 @@
+name: benchmark-l1
+
+# L1 — Local Index: ordinary 2-node OpenSearch cluster. Both nodes do indexing and
+# search, durable Lucene/translog data lives on node-local Docker volumes, remote-backed
+# storage is explicitly disabled. See ../../README.md "Search infrastructure" section.
+
+x-opensearch-common: &opensearch-common
+  image: opensearchproject/opensearch:${OPENSEARCH_VERSION}
+  environment: &opensearch-common-env
+    cluster.name: l1-local-index
+    discovery.seed_hosts: os-l1-1,os-l1-2
+    cluster.initial_cluster_manager_nodes: os-l1-1,os-l1-2
+    node.roles: cluster_manager,data,ingest
+    bootstrap.memory_lock: "true"
+    OPENSEARCH_JAVA_OPTS: "-Xms${OS_JAVA_HEAP} -Xmx${OS_JAVA_HEAP}"
+    DISABLE_INSTALL_DEMO_CONFIG: "true"
+    DISABLE_SECURITY_PLUGIN: "true"
+    # Explicit, not just "absent by default": this cluster does not publish segments,
+    # translog, or cluster state to any remote store. Verified by verify_cluster.py.
+    cluster.remote_store.state.enabled: "false"
+  ulimits:
+    memlock: { soft: -1, hard: -1 }
+    nofile: { soft: 65536, hard: 65536 }
+  deploy:
+    resources:
+      limits:
+        cpus: "${OS_CONTAINER_CPU_LIMIT}"
+        memory: "${OS_CONTAINER_MEM_LIMIT}"
+  healthcheck:
+    test: ["CMD-SHELL", "curl -s http://localhost:9200/_cluster/health | grep -q '\"status\"'"]
+    interval: 10s
+    timeout: 5s
+    retries: 20
+  networks: [l1-net]
+
+services:
+  os-l1-1:
+    <<: *opensearch-common
+    container_name: os-l1-1
+    environment:
+      <<: *opensearch-common-env
+      node.name: os-l1-1
+    volumes: [os-l1-data1:/usr/share/opensearch/data]
+    ports: ["9200:9200"]
+
+  os-l1-2:
+    <<: *opensearch-common
+    container_name: os-l1-2
+    environment:
+      <<: *opensearch-common-env
+      node.name: os-l1-2
+    volumes: [os-l1-data2:/usr/share/opensearch/data]
+    ports: ["9201:9200"]
+
+volumes:
+  os-l1-data1:
+  os-l1-data2:
+
+networks:
+  l1-net:
