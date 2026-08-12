@@ -1,0 +1,20 @@
+{
+  "dataset_handle": "asaniczka/amazon-products-dataset-2023-1-4m-products",
+  "random_seed": 42,
+  "offline_fraction": 0.8,
+  "raw_row_count": 1426337,
+  "duplicate_asin_rows_dropped": 0,
+  "deduplicated_row_count": 1426337,
+  "initial_corpus_rows": 1141069,
+  "write_corpus_rows": 285268,
+  "columns": [
+    "asin",
+    "title",
+    "category_id",
+    "price",
+    "stars",
+    "reviews",
+    "isBestSeller"
+  ],
+  "created_at": "2026-08-12T13:09:51Z"
+}

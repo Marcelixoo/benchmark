@@ -1,0 +1,19 @@
+{
+  "dataset_handle": "abhishekmungoli/amazon-query-product-search",
+  "source_file": "/Users/marcelot/.cache/kagglehub/datasets/abhishekmungoli/amazon-query-product-search/versions/1/shopping_queries_dataset_examples.parquet",
+  "random_seed": 42,
+  "preferred_locale": "us",
+  "raw_row_count": 2621288,
+  "corpus_relevance_filter": {
+    "applied": true,
+    "definition": "query kept iff >=1 judged product_id is present in data/corpus_initial.parquet asins",
+    "corpus_file": "/Users/marcelot/University/benchmark/data/corpus_initial.parquet",
+    "corpus_asin_count": 1141069,
+    "raw_rows_before_filter": 2621288,
+    "raw_rows_after_filter": 247810
+  },
+  "deduplicated_query_count": 60141,
+  "fixed_query_set_size": 5000,
+  "dedupe_key": "query_id",
+  "created_at": "2026-08-12T13:39:50Z"
+}

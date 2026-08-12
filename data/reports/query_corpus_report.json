@@ -1,0 +1,28 @@
+{
+  "source_file": "/Users/marcelot/.cache/kagglehub/datasets/abhishekmungoli/amazon-query-product-search/versions/1/shopping_queries_dataset_examples.parquet",
+  "raw_row_count": 2621288,
+  "columns": [
+    "example_id",
+    "query",
+    "query_id",
+    "product_id",
+    "product_locale",
+    "esci_label",
+    "small_version",
+    "large_version",
+    "split"
+  ],
+  "resolved_query_col": "query",
+  "resolved_query_id_col": "query_id",
+  "resolved_locale_col": "product_locale",
+  "null_pct": {},
+  "unique_query_id_count": 130652,
+  "unique_normalized_text_count": 130193,
+  "locale_breakdown": {
+    "us": 1818825,
+    "jp": 446053,
+    "es": 356410
+  },
+  "approx_file_size_bytes": 51286808,
+  "approx_file_size_human": "48.9 MB"
+}

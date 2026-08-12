@@ -1,0 +1,48 @@
+# Central configuration for the Local Index vs Shared Index benchmark scaffold.
+# Every script under scripts/ reads this file — keep it as the single source of
+# truth for the seed, dataset locations, and split/query-set sizes so both
+# architectures consume byte-identical inputs.
+
+seed: 42
+
+datasets:
+  products:
+    handle: "asaniczka/amazon-products-dataset-2023-1-4m-products"
+    file: "amazon_products.csv"
+    categories_file: "amazon_categories.csv"
+  queries:
+    handle: "abhishekmungoli/amazon-query-product-search"
+    preferred_locale: "us"
+
+paths:
+  data_dir: "data"
+  reports_dir: "data/reports"
+
+split:
+  offline_fraction: 0.8 # ~80% initial corpus, ~20% held-out write corpus
+
+query_set:
+  fixed_size: 5000
+
+workload:
+  index_batch_size: 500
+  write_feed_batch_size: 50
+  smoke_test_query_count: 1000
+  smoke_test_sample_inspect_count: 20
+
+# Local/Shared Index services are not built yet. base_url must be filled in
+# (e.g. "http://localhost:8080") before scripts/smoke_test.py,
+# scripts/index_initial_corpus.py, or scripts/feed_write_workload.py can run.
+# Until then, those scripts exit early with an explicit message instead of
+# silently doing nothing.
+systems:
+  local_index:
+    base_url: null
+    index_path: "/index"
+    search_path: "/search"
+    stats_path: "/stats"
+  shared_index:
+    base_url: null
+    index_path: "/index"
+    search_path: "/search"
+    stats_path: "/stats"

@@ -1,0 +1,21 @@
+{
+  "row_count": 1426337,
+  "column_count": 11,
+  "dtypes": {
+    "asin": "object",
+    "title": "object",
+    "imgUrl": "object",
+    "productURL": "object",
+    "stars": "float64",
+    "reviews": "int64",
+    "price": "float64",
+    "listPrice": "float64",
+    "category_id": "int64",
+    "isBestSeller": "bool",
+    "boughtInLastMonth": "int64"
+  },
+  "null_pct": {},
+  "duplicate_asin_count": 0,
+  "approx_file_size_bytes": 375936400,
+  "approx_file_size_human": "358.5 MB"
+}

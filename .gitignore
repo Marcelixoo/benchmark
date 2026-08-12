@@ -1,0 +1,14 @@
+.env
+.venv/
+.venv.libressl-bak/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Dataset splits and lookups (large, regenerable — see scripts/prepare_*.py)
+data/*.parquet
+data/*.csv
+!data/.gitkeep
+
+# Small provenance/report JSON+MD files (split_metadata.json, query_metadata.json,
+# data/reports/*) are intentionally tracked — they're the thesis's exact-stats deliverables.
