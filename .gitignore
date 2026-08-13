@@ -17,3 +17,7 @@ data/*.csv
 # repository-s3 plugin zip, fetched on the host and COPY'd into opensearch-s1.Dockerfile
 # (see README "Search infrastructure") — large binary, regenerable via curl.
 infra/s1/repository-s3-*.zip
+
+# Formal-experiment outputs (scripts/formal/): canonical-baseline volume
+# snapshots and the 18-run result bundles. Large/regenerable — not source.
+results/
