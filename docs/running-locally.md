@@ -46,7 +46,7 @@ curl "localhost:8000/api/steps/verify_cluster/compare"
 
 ### With Postman
 
-Import [`docs/benchmark-api.postman_collection.json`](benchmark-api.postman_collection.json).
+Import [`postman/benchmark-api.postman_collection.json`](benchmark-api.postman_collection.json).
 It defines collection variables `base_url` (defaults to
 `http://localhost:8000`), `step_id`, `system`, and `run_id`.
 
