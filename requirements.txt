@@ -8,3 +8,7 @@ ipykernel==7.3.0
 pyyaml==6.0.3
 requests==2.34.2
 opensearch-py==2.8.0
+typer==0.19.0
+fastapi==0.119.0
+uvicorn[standard]==0.38.0
+sse-starlette==2.1.3

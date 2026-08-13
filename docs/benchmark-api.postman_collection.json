@@ -1,0 +1,113 @@
+{
+  "info": {
+    "name": "Benchmark API",
+    "description": "Local FastAPI server (server.py) fronting the benchmark pipeline. See docs/api-contract.md and docs/running-locally.md.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:8000" },
+    { "key": "step_id", "value": "inspect_products" },
+    { "key": "system", "value": "local_index" },
+    { "key": "run_id", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "List steps",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{base_url}}/api/steps", "host": ["{{base_url}}"], "path": ["api", "steps"] }
+      }
+    },
+    {
+      "name": "List systems",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{base_url}}/api/systems", "host": ["{{base_url}}"], "path": ["api", "systems"] }
+      }
+    },
+    {
+      "name": "Get config",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{base_url}}/api/config", "host": ["{{base_url}}"], "path": ["api", "config"] }
+      }
+    },
+    {
+      "name": "Get step status",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/steps/{{step_id}}/status?system={{system}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "steps", "{{step_id}}", "status"],
+          "query": [{ "key": "system", "value": "{{system}}" }]
+        }
+      }
+    },
+    {
+      "name": "Run step",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if (pm.response.code === 202) {",
+              "    const body = pm.response.json();",
+              "    pm.collectionVariables.set('run_id', body.run_id);",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"system\": \"{{system}}\",\n  \"calibration\": false\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/steps/{{step_id}}/run",
+          "host": ["{{base_url}}"],
+          "path": ["api", "steps", "{{step_id}}", "run"]
+        }
+      }
+    },
+    {
+      "name": "Stream run logs (SSE)",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Accept", "value": "text/event-stream" }],
+        "url": {
+          "raw": "{{base_url}}/api/runs/{{run_id}}/stream",
+          "host": ["{{base_url}}"],
+          "path": ["api", "runs", "{{run_id}}", "stream"]
+        }
+      }
+    },
+    {
+      "name": "Get report",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/steps/{{step_id}}/report?system={{system}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "steps", "{{step_id}}", "report"],
+          "query": [{ "key": "system", "value": "{{system}}" }]
+        }
+      }
+    },
+    {
+      "name": "Compare systems",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/steps/{{step_id}}/compare",
+          "host": ["{{base_url}}"],
+          "path": ["api", "steps", "{{step_id}}", "compare"]
+        }
+      }
+    }
+  ]
+}
