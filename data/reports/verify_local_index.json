@@ -13,8 +13,8 @@
         "number_of_data_nodes": 2,
         "discovered_master": true,
         "discovered_cluster_manager": true,
-        "active_primary_shards": 3,
-        "active_shards": 6,
+        "active_primary_shards": 5,
+        "active_shards": 10,
         "relocating_shards": 0,
         "initializing_shards": 0,
         "unassigned_shards": 0,
@@ -99,5 +99,5 @@
       }
     }
   ],
-  "created_at": "2026-08-12T17:46:42Z"
+  "created_at": "2026-08-13T01:48:56Z"
 }

@@ -1,0 +1,1039 @@
+{
+  "summary": {
+    "system": "shared_index",
+    "search_base_url": "http://localhost:9203",
+    "calibration_run": false,
+    "queries_attempted": 1000,
+    "queries_succeeded": 1000,
+    "errors_count": 0,
+    "error_rate_pct": 0.0,
+    "pct_with_at_least_one_result": 98.9,
+    "zero_result_rate_pct": 1.1,
+    "median_result_count": 10.0,
+    "p95_result_count": 10.0,
+    "created_at": "2026-08-13T09:09:22Z"
+  },
+  "sample_for_manual_review": [
+    {
+      "query": "room accessories for men",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B09J4HWW68",
+          "title": "BAGSMART Toiletry Bag for Men, Hanging Travel Toiletry Organizer Large Dopp Kit for Men, Water Resistant Travel Bag Shaving Bag for Toiletries Accessories, Door Room Essentials, Black",
+          "category_id": 50,
+          "price": 19.99,
+          "stars": 4.7,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B084GS82RV",
+          "title": "BAGSMART Toiletry Bag for Men, Travel Toiletry Organizer Dopp Kit Water-resistant Shaving Bag for Toiletries Accessories, Door Room Essentials, Black",
+          "category_id": 50,
+          "price": 19.99,
+          "stars": 4.7,
+          "reviews": 14267,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0B1VXC7J6",
+          "title": "Magnetic Lint Bin, Metal Laundry Room Lint Box, Trash Can for Laundry Room, Laundry Room Decor Accessories",
+          "category_id": 176,
+          "price": 24.99,
+          "stars": 4.5,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0CDWQDLPH",
+          "title": "Car Air Fresheners - Halloween Christmas Cute Car Interior Accessories Hanging Scents 9PCS Room Xmas Tree Decorations Gift for Women Men Teen Girl",
+          "category_id": 23,
+          "price": 5.99,
+          "stars": 3.5,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BQXLFLLJ",
+          "title": "Bold and Brash Squidward Painting Wall Art Home Decorations Canvas for Bedroom Office Room Decor Home Decorations Accessories Gift for Men Women (8x12 inches)",
+          "category_id": 174,
+          "price": 17.5,
+          "stars": 4.8,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "race car sheets",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B09J1R5XSK",
+          "title": "Stesha Party Race Car Birthday Gift Wrapping Paper - Folded Flat 30 x 20 Inch - 3 Sheets",
+          "category_id": 12,
+          "price": 13.95,
+          "stars": 5.0,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BW5H2HZS",
+          "title": "Vintage Race Car Banner - Race Car Birthday Decorations,Race Car Birthday Banner,Car Banner Decoration,Racing Birthday Party Banner",
+          "category_id": 13,
+          "price": 12.99,
+          "stars": 4.6,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B094G5KNNB",
+          "title": "127 Pieces Car Race Balloons Party Supplies Race Car Theme Birthday Party Garland Arch Party Decorations (Race Car Style)",
+          "category_id": 177,
+          "price": 14.99,
+          "stars": 4.7,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BY6MGQKY",
+          "title": "Atlasonix Slot Car Race Track Sets - Slot Cars, Race Tracks & Accessories Electric Race Car Track, Dual Electric Race Track, Electric Race Car Track Set for Girls & Boys Age 5 Years+",
+          "category_id": 240,
+          "price": 34.99,
+          "stars": 3.9,
+          "reviews": 360,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BMPVY6J5",
+          "title": "Fast One High Chair Banner - Race Car 1st Birthday Banner, Race Car Theme Birthday Decoration, Vintage Race Car 1st Birthday Decor, Retro Race Car First Birthday Cake Smash Props",
+          "category_id": 216,
+          "price": 15.99,
+          "stars": 4.8,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "jaccuzi tub cleaner brush",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B00178WGHY",
+          "title": "The Masters Paint Brush Cleaner and Preserver - 24 Ounce Tub - Lemon Scented",
+          "category_id": 10,
+          "price": 0.0,
+          "stars": 4.7,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0049UZ8Z4",
+          "title": "General Pencil 103-BJ The Masters Brush Cleaner and Preserver Tub, 24-Ounce",
+          "category_id": 10,
+          "price": 0.0,
+          "stars": 4.9,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BCH3GCFG",
+          "title": "[3 Pack] Impresa Shower Cleaning Brush Heads for Rubbermaid Reveal Power Scrubber - Grout Cleaner, Shower Scrubber, Kitchen Brush, Tub Scrubber - All Purpose Electric Brush Cleaner Replacement Head",
+          "category_id": 151,
+          "price": 14.99,
+          "stars": 3.8,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B09GNMSM9Z",
+          "title": "Paint Brush Washer Basin Art Brush Cleaner Pot Tub with Brush Holder Palette Lid Oil Paint Brush Washing Bucket Painting Brushes Washer Cleaner Barrel for Watercolor Oil Painting Round White",
+          "category_id": 9,
+          "price": 11.9,
+          "stars": 3.5,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BPMP74TV",
+          "title": "46\" Bathtub Tub Scrubber with Long Handle Scrub Brush for Shower, Jhua Shower Scrubber Brush for Cleaning, 2 in 1 Shower Cleaning Brush Tile Tub Cleaner Scrub Brush with Long Handle for Bathroom",
+          "category_id": 167,
+          "price": 14.39,
+          "stars": 4.0,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "boxers for women",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B0C2J6PMFW",
+          "title": "Mens Boxers Quick Dry Nylon Boxers for Men Athletic Boxers Hiking Underwear Mesh Boxer Shorts",
+          "category_id": 110,
+          "price": 38.99,
+          "stars": 4.4,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0C7LLMBKD",
+          "title": "Buffalo Mens Boxers - 3-Pack Cotton Boxers for Men, Boxer Shorts",
+          "category_id": 110,
+          "price": 29.95,
+          "stars": 1.0,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0C468JBG3",
+          "title": "Classic Boxers Shorts Cotton Woven Mens Underwear Boxers Pack",
+          "category_id": 110,
+          "price": 35.99,
+          "stars": 4.3,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0C1W922RB",
+          "title": "Luxury Artisan Silk Boxers For Men 2 Pack, Natural Mulberry Mens Silk Boxers",
+          "category_id": 110,
+          "price": 97.99,
+          "stars": 5.0,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B09HSW6THF",
+          "title": "Luxury Artisan Silk Boxers For Men, Pure Natural Mulberry Silk, Mens Silk Boxers",
+          "category_id": 110,
+          "price": 49.99,
+          "stars": 4.5,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "colorscience total eye 3 in 1",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B0798BBMLP",
+          "title": "Colorescience Total Eye 3-in-1 Anti-Aging Renewal Therapy for Wrinkles & Dark Circle",
+          "category_id": 49,
+          "price": 79.0,
+          "stars": 4.3,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B07HXWBQQZ",
+          "title": "Scotch-Brite 3-in-1 Microfiber Cloth (12 Cloths Total)",
+          "category_id": 19,
+          "price": 31.54,
+          "stars": 3.8,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B06WVKBT93",
+          "title": "3 Packs - Beadalon Collapsible Eye Needles 2.5\" Heavy - 4pcs/pk - Total 12 Needles (in Rigid Pak TM Mailer)",
+          "category_id": 1,
+          "price": 14.39,
+          "stars": 4.7,
+          "reviews": 147,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B08JQ976NV",
+          "title": "YaeMarine 2-Pack 1/2\" Stainless Steel Marine Boat Stern Bow Eye Tie Down U Bolt, Thread Length 3-1/2\" Total Length 5\" (Dia. 1/2\" x 5\" Total Length)",
+          "category_id": 154,
+          "price": 16.99,
+          "stars": 4.8,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B000F65JSC",
+          "title": "Olay Eye Cream Total Effects 7-in-one Anti-Aging Transforming Eye Cream 0.5 oz Packaging may Vary",
+          "category_id": 49,
+          "price": 21.51,
+          "stars": 4.4,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "yoga lenovo laptop charger",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B09NM83QDY",
+          "title": "Charger for Lenovo Laptop Computer\uff0c65W 45W, for Lenovo ThinkPad Yoga Chromebook 20V 3.25A Lenovo Laptop Charger",
+          "category_id": 65,
+          "price": 14.99,
+          "stars": 4.3,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B08ZSMMPBD",
+          "title": "65W USB C Laptop Charger Replacement for Lenovo Thinkpad/Yoga/Chromebook, ADLX65YDC2A Lenovo Laptop Charger",
+          "category_id": 81,
+          "price": 16.99,
+          "stars": 4.5,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B01LXNLC7M",
+          "title": "Charger for Lenovo Laptop, Thinkpad, Yoga, 65W, 45W, USB C, Fast Charger",
+          "category_id": 81,
+          "price": 16.99,
+          "stars": 4.5,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B01N2M0RPZ",
+          "title": "Laptop Charger for Lenovo Yoga, (UL Safety Certified), USB C Connector, 65W, 45W",
+          "category_id": 65,
+          "price": 15.99,
+          "stars": 4.5,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B073GQGFWY",
+          "title": "Charger for Lenovo Yoga Laptop, UL Certified Safety, USB C Connector, 65W, 45W",
+          "category_id": 65,
+          "price": 16.99,
+          "stars": 4.3,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "face shield for toddlers",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B09STXTZC6",
+          "title": "Face Shield,Anti-fog Protective Full Face Shield,Super Protective Face Shield Mask for Work,Full Face Shield for Weed Whacking,Anti-Fog Face Shield for Grinding",
+          "category_id": 205,
+          "price": 7.99,
+          "stars": 3.8,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B099RTZ4F8",
+          "title": "Full Face Sunglasses,Oversized Polarized Face Shield Tinted Face Shield,Visor Sunglasses",
+          "category_id": 120,
+          "price": 16.99,
+          "stars": 4.1,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0B6D1V2F9",
+          "title": "NEIKO 53889A Safety Face Shields, Forestry Helmet with Shield and Earmuffs, Chainsaw Helmet with Face Shield, Hard Hat Safety Gear Equipment, Protective Face Shield and Mesh Shield for Face Protection",
+          "category_id": 152,
+          "price": 27.97,
+          "stars": 4.6,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B08DMYJWBW",
+          "title": "Dearskin 5 Pcs Reusable Face Shield, Plastic Safety Face Shield Adjustable Transparent Full Face Anti-Spitting Protective Face Shield Protect Eyes and Face Protection 5 Pack",
+          "category_id": 205,
+          "price": 7.99,
+          "stars": 4.0,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B09FFVY7NR",
+          "title": "Super Protective Face Shield,Anti Fog Mask,Adult Clear Face Shield,Plastic Face Mask \uff08Black\uff09",
+          "category_id": 205,
+          "price": 9.99,
+          "stars": 3.9,
+          "reviews": 0,
+          "isBestSeller": true
+        }
+      ]
+    },
+    {
+      "query": "led strip lights for cars",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B08GL9CDWW",
+          "title": "EverBright Led Strip Lights for Cars, Led Headlight Strip for Daytime Running Lights Turn Signal Bulb DRL Sequential Switchback Led Strip Amber/Yellow & White (2Pcs 60CM/24 Inch)",
+          "category_id": 22,
+          "price": 13.89,
+          "stars": 4.0,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BS3MTPL3",
+          "title": "Car Hood Light Strip 70 Inches Exterior Car LED Strip Lights Flexible LED Strip Lights for Car Daytime Running Light for Cars, SUVs, Trucks\uff08White Light\uff09",
+          "category_id": 22,
+          "price": 11.99,
+          "stars": 3.9,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BB1RYKL8",
+          "title": "Car Led Strip Lights 24\" Connectable Red 12V Led Light Strip for Cars Golf Cart Boat Marine Motorcycle Interior & Exterior Waterproof Led Strip, 4Pack",
+          "category_id": 22,
+          "price": 16.99,
+          "stars": 4.1,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BVYCL2YV",
+          "title": "Universal Car LED Hood Light Strip 59/70\" Flexible Led Lights for Car Exterior,Waterproof&High Brightness DIY Strip Lights for Cars Daytime Running Light Suitable for Cars SUVs Trucks (White/59inch)",
+          "category_id": 22,
+          "price": 6.99,
+          "stars": 3.8,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B07SN3M8VW",
+          "title": "Battery Powered Led Strip Lights White Strip Lights Waterproof 6.56ft Led Battery Strip Flexible Sticky Led Strip Lights Kit for Bedroom Indoor Outdoor Led Lights 2 Pack",
+          "category_id": 169,
+          "price": 16.99,
+          "stars": 4.2,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "bahama mama g fuel",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B0019IVEEI",
+          "title": "theBalm Bahama Mama Bronzer",
+          "category_id": 48,
+          "price": 19.16,
+          "stars": 4.6,
+          "reviews": 2619,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B008MPDJL2",
+          "title": "Fuel Stabilizer- Gallon Size Unit Treats 2000 Gallons of Fuel - PRI-G-32V",
+          "category_id": 28,
+          "price": 85.15,
+          "stars": 4.6,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B07DQCH7NL",
+          "title": "Men's Bahama Short",
+          "category_id": 110,
+          "price": 22.5,
+          "stars": 4.3,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0B1JJK5P3",
+          "title": "Boys' Bahama Short",
+          "category_id": 84,
+          "price": 22.37,
+          "stars": 5.0,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B004GKDMFU",
+          "title": "Women's Bahama Long Sleeve",
+          "category_id": 116,
+          "price": 55.0,
+          "stars": 4.6,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "lady beatnik poetry",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "1452158800",
+          "title": "Paint Chip Poetry: A Game of Color and Wordplay (Poetry Game, Unique Poem Gift for Teachers)",
+          "category_id": 223,
+          "price": 17.91,
+          "stars": 4.7,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B01N2M8CPK",
+          "title": "Mimi's Joy Picture Frame with Poetry from Grandchild",
+          "category_id": 39,
+          "price": 29.99,
+          "stars": 4.8,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B07F3FN2GX",
+          "title": "Skeleteen Fake Cigarette Holder Accessory - Audrey Hepburn, Cruella Deville, Beatnik, 1920's Flapper Prop - 1 Piece",
+          "category_id": 130,
+          "price": 4.99,
+          "stars": 4.2,
+          "reviews": 0,
+          "isBestSeller": true
+        },
+        {
+          "asin": "B01M6CY5FW",
+          "title": "Magnetic Poetry Educational Products - Metal Easel Board - 11x13 Inches",
+          "category_id": 219,
+          "price": 24.95,
+          "stars": 4.7,
+          "reviews": 279,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B07PGQKDV9",
+          "title": "Poetry Tiles Essential Kit - 797 Word Magnets for Fridge Poetry and Silly Magnetic Messages - Get Creative, Express Yourself, and Make Others Laugh at Your Witty Words",
+          "category_id": 224,
+          "price": 19.99,
+          "stars": 4.7,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "playstation 3 composite cables",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B01A7IADC4",
+          "title": "Master Cables Compatible with HDMI Cable for Playstation 3 (PS3) Branded Quality Product",
+          "category_id": 243,
+          "price": 10.99,
+          "stars": 4.6,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B09226KT7G",
+          "title": "AV Cable Splitter, 3 RCA Male Jack to 6 RCA Female Plug Splitter Audio Video Av Adapter Cable Composite Video Splitter Adapter Output Cables Cord",
+          "category_id": 82,
+          "price": 5.99,
+          "stars": 4.5,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B08TLPKTFL",
+          "title": "6Ft AV Cable for PS2 PS1 PS3, AV to RCA Composite Audio Video TV Cord Compatible with Playstation 1 2 3",
+          "category_id": 243,
+          "price": 6.49,
+          "stars": 4.5,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0CFH5SXDX",
+          "title": "2 in 1 Wii Sensor Bar + Wii Composite Audio Video Cable, Wii AV Cables and Wired Motion Sensor Bar, Wii Replacement Cables Set Compatible with Wii Console",
+          "category_id": 244,
+          "price": 12.99,
+          "stars": 5.0,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B08TMHPRVV",
+          "title": "2Pack 6Ft AV Cable for PS2 PS1 PS3, AV to RCA Composite Audio Video TV Cord Compatible with Playstation 1 2 3",
+          "category_id": 243,
+          "price": 7.99,
+          "stars": 4.4,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "hard horses",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B09Q3KLZB8",
+          "title": "24 Sheets Horses Temporary Tattoos, Horses Birthday Decorations Party Favors",
+          "category_id": 48,
+          "price": 9.99,
+          "stars": 4.8,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0058SHPES",
+          "title": "Horses 3D",
+          "category_id": 242,
+          "price": 0.0,
+          "stars": 3.8,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B09BCZD8NQ",
+          "title": "Horses Gifts for her Horse Makeup Bag Loves Horses Lover Gifts Horses Cosmetic Bag Zipper Pouch Travel Bag Pencil Case Organizer Storage",
+          "category_id": 105,
+          "price": 13.99,
+          "stars": 4.7,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BZQNK6J4",
+          "title": "Centaur Neoprene Splint Boots with Padded Suede Overlay, Splint Boots, Boots for Horses, Splint Boots for Horses, Protective Boots for Horses, Equestrian Boots",
+          "category_id": 182,
+          "price": 18.95,
+          "stars": 0.0,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B00VV9BJ4U",
+          "title": "Pro Over Reach Boots for Horses & Ponies- Hard Wearing, Tough, with an Anti-Spin Heel Knob Ideal for All Activities, Sold in Pairs 7595P",
+          "category_id": 182,
+          "price": 29.42,
+          "stars": 0.0,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "wooden suit hangers for men",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B09KXBKTLK",
+          "title": "Wooden Hangers - 30 Pack - Slim Wooden Suit Hangers Coat Hangers for Closet, Heavy Duty Hangers Precisely Cut Notches Wood Hangers,Clothes Hangers for Shirt Suit Dress Natural",
+          "category_id": 173,
+          "price": 36.99,
+          "stars": 4.6,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0B5W1PR2T",
+          "title": "Wooden Hanger - Suit Hangers for Men Non Slip - Luxury Natural Lotus Wood & Velvet Hangers for Hanging Pants, Suits, Dress & Skirts -360\u00b0 Rotating Hook Hangers Wood - Wooden Hangers 20 Pack",
+          "category_id": 161,
+          "price": 39.97,
+          "stars": 4.7,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B09HKDQP6Z",
+          "title": "HOUSE DAY Wooden Hangers 12 Pack Hangers with Clips Wood Hangers Wooden Clothes Hanger Natural Smooth Finish Wooden Hanger Premium Wooden Hangers for Clothes Suit, White",
+          "category_id": 161,
+          "price": 27.99,
+          "stars": 4.7,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BY1CMDTS",
+          "title": "Wide Shoulder Wooden Hangers 6 Pack Non Slip Pants Bar, Smooth Finish Wood Suit Hanger for Men and Women Coat Hangers for Closet, Suit, 360\u00b0 Swivel Hook, for Dress, Jacket, Heavy Clothes Hangers",
+          "category_id": 161,
+          "price": 32.99,
+          "stars": 4.5,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B07TXPQC3N",
+          "title": "Qualsen Wooden Hangers 30 Pack,Pants Hangers Non Slip,Wood Coat Suit Clothes Hanger,Hangers Heavy Duty,Jacket, Shirt, Pants, Suit Hangers",
+          "category_id": 161,
+          "price": 34.59,
+          "stars": 4.7,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "giant backpack",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B01FAEOL2S",
+          "title": "Giant Uno Giant Game",
+          "category_id": 223,
+          "price": 31.81,
+          "stars": 4.7,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0C18VC4QK",
+          "title": "Toddler Backpack for Boys Girls Blue Space Tyrannosaurus Rex Backpacks for School Galactic Giant Dinosaur Fantasy Bookbag Cute Lightweight Travel Bag",
+          "category_id": 107,
+          "price": 27.99,
+          "stars": 3.6,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BKSFXYH2",
+          "title": "Plush T Rex Dinosaur Backpack, 16\" Dinosaur Stuffed Animal Dinosaur Bag toddler Dinosaur Backpack for Kids 3-5, Dinosaur Gift Bag Plush Dinosaur Toys for kids 3-5-7 Giant Dinosaur Plush",
+          "category_id": 229,
+          "price": 29.98,
+          "stars": 4.1,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B09CM6MD4H",
+          "title": "Halloween Giant Spider Decorations, Large Black Spider Legs for Adults Fake Realistic Hairy Spider Backpack Indoor Outdoor Yard Party (\u6781\u7b80\u4e3b\u4e49)",
+          "category_id": 168,
+          "price": 16.99,
+          "stars": 3.7,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B09DCN9W9T",
+          "title": "Super7 The Iron Giant Iron Giant (with Hogarth Hughes) 3.75 in Reaction Figure",
+          "category_id": 217,
+          "price": 19.95,
+          "stars": 4.6,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "hair accessories little girl",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B0BVK3GQBT",
+          "title": "Toddler Headband with bow little girl headbands glitter headband for girls headband for little girl hair accessories sparkly hair bands for kids",
+          "category_id": 120,
+          "price": 9.99,
+          "stars": 4.4,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BVK3S5Q9",
+          "title": "Toddler Headband with bow little girl headbands glitter headband for girls headband for little girl hair accessories sparkly hair bands for kids",
+          "category_id": 120,
+          "price": 9.99,
+          "stars": 4.4,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0CDLZHY34",
+          "title": "ELEMIRSA 15 Pairs Baby Girl Hair Ties with Bow Ponytail Holders Girl Hair Accessories Brown Bow Hair Ties for Little Girl Teens Toddler Kids",
+          "category_id": 35,
+          "price": 14.99,
+          "stars": 0.0,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BX6JNNYV",
+          "title": "10 PCS Baby Girl Hair Clips Bows Barrettes Fully Lined Alligator Clip Hair Accessories for Little Girl Toddler Kids Children (Muticolor)",
+          "category_id": 35,
+          "price": 5.39,
+          "stars": 4.3,
+          "reviews": 6,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B09JP3LPJS",
+          "title": "20pcs Baby Girl Hair Bows Clips Fully Lined Barrettes Hair Accessories for Little Girls Toddler Kids Teens",
+          "category_id": 35,
+          "price": 15.99,
+          "stars": 4.7,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "20oz tumbler stainless",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B0C1BYR77B",
+          "title": "CUPITUP Pinch Perfect Tumbler Clamp for Sublimation Tumbler 20oz Blank, Pinch Perfect Clamp 20oz Tumbler Sublimation Tool, Sublimation Tumbler Pinch Tool with Wing Nut Tightening",
+          "category_id": 4,
+          "price": 6.98,
+          "stars": 4.1,
+          "reviews": 103,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0C5CZC524",
+          "title": "YIIFIISET 30oz Tumbler Heat Press Machine,Mug Press Machine for Stainless Steel, Ceramic, Glass Tumbler,Universal 11oz 15oz 16oz 20oz 30oz Tumbler Press",
+          "category_id": 4,
+          "price": 139.59,
+          "stars": 4.5,
+          "reviews": 5,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BQ6G2F8B",
+          "title": "1 PCS 20oz Sublimation Tumbler Set Double Walled Stainless Steel Skinny Straight Blank Tumbler Bulk with Lid, Straw for Heat Transfer",
+          "category_id": 4,
+          "price": 9.99,
+          "stars": 4.5,
+          "reviews": 22,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BWH8L7HP",
+          "title": "Beiyet 20OZ Heat Press Transfer Sublimation Tumbler Blank Skinny Straight 1Packs Double Walled Stainless Steel with Lid,Vacuum Insulated Tumblers Cup(20oz\uff081pack\uff09)",
+          "category_id": 4,
+          "price": 9.99,
+          "stars": 5.0,
+          "reviews": 3,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B01JQ7ED4Q",
+          "title": "YETI Plastic Rambler 20oz Tumbler Handle Only",
+          "category_id": 156,
+          "price": 10.0,
+          "stars": 4.8,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "apex coins",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B08ZDXC9RC",
+          "title": "Apex Legends \u2013 6,700 Apex Coins - Switch [Digital Code]",
+          "category_id": 260,
+          "price": 59.99,
+          "stars": 4.3,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B08ZDWC13V",
+          "title": "Apex Legends \u2013 2,150 Apex Coins - Switch [Digital Code]",
+          "category_id": 260,
+          "price": 19.99,
+          "stars": 4.5,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B08ZDNKC9R",
+          "title": "Apex Legends \u2013 4,350 Apex Coins - Switch [Digital Code]",
+          "category_id": 260,
+          "price": 39.99,
+          "stars": 4.3,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B07NPG934Z",
+          "title": "Apex Legends - 11,500 Apex Coins - PC Origin [Online Game Code]",
+          "category_id": 263,
+          "price": 99.99,
+          "stars": 3.7,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B07NPMZPZQ",
+          "title": "Apex Legends - 1,000 Apex Coins - PC Origin [Online Game Code]",
+          "category_id": 263,
+          "price": 9.99,
+          "stars": 3.8,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "natural hair dyes without chemicals",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B07P5ZQ37H",
+          "title": "Dr.Ancient Stinging Nettle Soap Bar Organic Natural Vegan Traditional Handmade Antique - Anti-Dandruff, For Acne, Peeling, Healthy Hair - No Chemicals, Pure Natural Soaps!",
+          "category_id": 35,
+          "price": 9.5,
+          "stars": 4.3,
+          "reviews": 4167,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0C3P87YFY",
+          "title": "Allurium Hair Growth Serum Designed for Black Women with Organic Herbs and Natural Vitamin, No Chemicals (1oz per bottle, 2 Pack)",
+          "category_id": 47,
+          "price": 13.99,
+          "stars": 3.4,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B07D4PX6R8",
+          "title": "Herbal Nitro Extreme Energy Pills - Natural Energy Boost Supplement for Men, Women - All-Day Energy & Motivation Without Crash, Jitters, Chemicals - Maximum Strength to Fight Fatigue - 60 Caps",
+          "category_id": 132,
+          "price": 24.97,
+          "stars": 3.6,
+          "reviews": 972,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B09GXQCZ4Z",
+          "title": "VEGAMOUR GRO Revitalizing Conditioner, Support Thicker, Fuller Looking Hair, Conditioner Formulated Without Sulfates for Thinning Hair, Natural Citrus Scent, 8 fl. oz.",
+          "category_id": 47,
+          "price": 47.98,
+          "stars": 4.4,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B08BW61TVT",
+          "title": "Full Bore Ultra Flow Hand Scrub, 1 Gallon - Removes Oil, Grease, Dirt, Filth Without Harsh Chemicals",
+          "category_id": 51,
+          "price": 39.95,
+          "stars": 4.4,
+          "reviews": 98,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "bathroom storage",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B0BBLGXK26",
+          "title": "2+1 Set Towel Racks for Bathroom, Towel Holder for Bathroom Wall, Bathroom Storage, Towel Racks for Bathroom Wall Mounted, Bathroom Towel Storage, Towel Storage for Small Bathroom, Spa, Salon(Black)",
+          "category_id": 163,
+          "price": 17.99,
+          "stars": 4.4,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0BFPLZX1N",
+          "title": "Bathroom Shelves for Storage, Bamboo Bathroom Shelves Over Toilet, Adjustable 3 Tiers Shelf for Bathroom Storage",
+          "category_id": 163,
+          "price": 20.99,
+          "stars": 4.7,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0B4D91BH2",
+          "title": "PACKISM Wall Basket, 4 Pack Small Bathroom Organizer Sturdy Durable Bathroom Storage Organizer Partition Storage Add Extra Storage for Bathroom Cabinet, Black",
+          "category_id": 163,
+          "price": 29.99,
+          "stars": 4.7,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B08Y7K2Y7V",
+          "title": "Stackable Clear Acrylic Bathroom Drawer Organizers. Vanity Makeup Organizer. Bathroom Organization and Storage. Bathroom Storage 8 Piece Storage Drawers. Cabinet Organizer Bins Clear Containers",
+          "category_id": 173,
+          "price": 16.95,
+          "stars": 4.7,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0B7VPFQF5",
+          "title": "Bathroom Storage Cabinet,4-Tiers Small Bathroom Storage Cabinet Great for Toilet Paper Holder,Narrow Bathroom Cabinet-Over The Toilet Storage Waterproof for Small Spaces",
+          "category_id": 163,
+          "price": 19.99,
+          "stars": 3.5,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    },
+    {
+      "query": "timex navi",
+      "result_count": 10,
+      "results": [
+        {
+          "asin": "B08ZCP5MGM",
+          "title": "Timex Men's Navi XL 41mm TW2U83500VQ Mechanical Automatic Wind Watch",
+          "category_id": 113,
+          "price": 178.93,
+          "stars": 4.7,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B003LPM6J4",
+          "title": "Timex Men's Marathon by Timex Digital Full-Size",
+          "category_id": 113,
+          "price": 23.0,
+          "stars": 3.9,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B07VYLGL2Q",
+          "title": "Timex Women's Marathon by Timex 39 mm Digita Watch",
+          "category_id": 121,
+          "price": 11.5,
+          "stars": 3.7,
+          "reviews": 24,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B0056DC8LU",
+          "title": "T2N654-Timex",
+          "category_id": 113,
+          "price": 42.99,
+          "stars": 4.5,
+          "reviews": 0,
+          "isBestSeller": false
+        },
+        {
+          "asin": "B098L6XNFZ",
+          "title": "Men's, Navi Chukka Boot",
+          "category_id": 114,
+          "price": 119.95,
+          "stars": 4.5,
+          "reviews": 0,
+          "isBestSeller": false
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

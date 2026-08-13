@@ -341,10 +341,56 @@ Separately, `scripts/lib/queries.py`'s file-discovery originally only scanned
 `*.parquet`. This was a genuine bug (not a dataset-methodology change) and
 was fixed to scan both formats before any dedup/split logic ran.
 
+## Web UI / CLI (live run tracking)
+
+A thin FastAPI server (`server.py`) plus a plain HTML/CSS/JS dashboard
+(`web/`) sit on top of the scripts above via `benchmark_api/`, so
+steps/systems can be triggered and watched without hand-running commands in
+a terminal. A Typer CLI (`cli.py`) covers the same operations for
+terminal-only use.
+
+Start it from the repo root:
+
+```bash
+uvicorn server:app --reload --port 8000
+```
+
+then open [http://localhost:8000](http://localhost:8000). Full setup
+(dependency install, curl/Postman smoke checks) is in
+[`docs/running-locally.md`](docs/running-locally.md); the endpoint
+reference is in [`docs/api-contract.md`](docs/api-contract.md).
+
+Run status/log tracking works across processes, not just within the
+server: a step triggered via `python3 cli.py run <step> [--system ...]` in
+a separate terminal shows up in the browser exactly like one triggered by
+clicking "Run" in the UI, and vice versa. This is backed by JSON state
+files under `data/.runs/` (gitignored, regenerated per run) rather than
+in-memory-only tracking, so:
+
+- the Overview page polls step status and flips a step's chip to a
+  spinning "running" state as soon as any process starts it;
+- a live log panel auto-attaches via SSE (`/api/runs/{run_id}/stream`) and
+  streams subprocess output line-by-line, with no manual action needed;
+- on completion the chip flips to `done` (with throughput/metadata) or
+  `failed`, and the report becomes available via the "Get report" panel /
+  `/api/steps/{step}/report`.
+
+In practice: leave the server running and the browser tab open on
+Overview, then drive runs from either the CLI or the UI — every run is
+tracked live regardless of which one started it.
+
 ## Layout
 
 ```
 config/benchmark.yaml            # single source of truth: seed, dataset handles, paths, sizes, systems.*.write_base_url/search_base_url
+server.py                        # FastAPI adapter over benchmark_api/ — the 8 endpoints in docs/api-contract.md
+cli.py                           # Typer CLI over benchmark_api/ — same operations as the server, terminal-only
+benchmark_api/                   # shared business logic used by both server.py and cli.py (steps, systems, run/log tracking, reports)
+  run_state.py                   # cross-process run status + log persistence under data/.runs/ (JSON, gitignored)
+web/                             # plain HTML/CSS/JS dashboard, served by server.py at "/"
+docs/
+  running-locally.md             # server/CLI setup + curl/Postman smoke checks
+  api-contract.md                # full endpoint reference
 infra/
   .env                            # OPENSEARCH_VERSION pin, MinIO creds (lab-only), container resource limits — shared by both compose files
   l1/docker-compose.yml           # L1: 2-node local OpenSearch cluster, remote store disabled

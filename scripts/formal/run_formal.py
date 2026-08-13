@@ -13,12 +13,16 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
+import sys
 import threading
 import time
+import uuid
 from pathlib import Path
 
 import pandas as pd
 
+from benchmark_api import run_state
 from scripts.formal import baseline, validity
 from scripts.formal.infra import CONTAINERS_BY_SYSTEM
 from scripts.formal.verify_baseline import run_gate
@@ -33,6 +37,43 @@ EXPERIMENT_CONFIG_PATH = PROJECT_ROOT / "experiment-config.json"
 WARMUP_S = 180.0
 LEAD_IN_S = 30.0
 MEASUREMENT_S = 300.0
+
+# "formal_run" is not a registered benchmark_api/CLI step (it's a
+# multi-phase in-process harness, not a single script), so it never shows
+# up in the web UI's step grid. It's still write-through'd to run_state so
+# it's observable cross-process by run_id alone: `run_exists`/the SSE
+# stream endpoint work off run_state.read_run() directly, independent of
+# the step registry.
+_FORMAL_STEP_ID = "formal_run"
+
+
+def _now() -> str:
+    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+
+
+class _RunStateTee:
+    """Duplicates stdout writes into run_state's log file so this run's
+    progress prints are tailable live via /api/runs/{run_id}/stream, the
+    same as any subprocess-backed step."""
+
+    def __init__(self, run_id: str, real_stdout) -> None:
+        self._run_id = run_id
+        self._real = real_stdout
+        self._seq = 0
+        self._partial = ""
+
+    def write(self, s: str) -> int:
+        self._real.write(s)
+        self._partial += s
+        while "\n" in self._partial:
+            line, self._partial = self._partial.split("\n", 1)
+            if line:
+                run_state.append_log_line(self._run_id, "stdout", line, self._seq, _now())
+                self._seq += 1
+        return len(s)
+
+    def flush(self) -> None:
+        self._real.flush()
 
 
 def _load_experiment_config() -> dict:
@@ -61,6 +102,30 @@ def _write_json(path: Path, payload: object) -> None:
 
 def run_condition(system: str, workload: str, repetition: int, position: int | None = None,
                    warmup_s: float = WARMUP_S, lead_in_s: float = LEAD_IN_S, measurement_s: float = MEASUREMENT_S) -> dict:
+    """Cross-process-observable wrapper around `_run_condition`: records a
+    run_state slot/run for (formal_run, system) around the call so this
+    condition's progress is visible/tailable from any process for the
+    duration of the run, then finishes it as done/failed based on the
+    result's validity (or failed, on an unhandled exception)."""
+    run_id = uuid.uuid4().hex[:12]
+    run_state.start_run(_FORMAL_STEP_ID, system, run_id, os.getpid())
+    real_stdout = sys.stdout
+    sys.stdout = _RunStateTee(run_id, real_stdout)
+    try:
+        print(f"[run_state] run_id={run_id} (not in the web UI's step grid — tail directly: "
+              f"curl -N localhost:8000/api/runs/{run_id}/stream)")
+        result = _run_condition(system, workload, repetition, position, warmup_s, lead_in_s, measurement_s)
+    except Exception:
+        run_state.finish_run(_FORMAL_STEP_ID, system, run_id, "failed")
+        raise
+    finally:
+        sys.stdout = real_stdout
+    run_state.finish_run(_FORMAL_STEP_ID, system, run_id, "done" if result["valid"] else "failed")
+    return result
+
+
+def _run_condition(system: str, workload: str, repetition: int, position: int | None = None,
+                    warmup_s: float = WARMUP_S, lead_in_s: float = LEAD_IN_S, measurement_s: float = MEASUREMENT_S) -> dict:
     exp_config = _load_experiment_config()
     workload_spec = exp_config["workloads"][workload]
     target_qps = exp_config["query_rate_qps"]

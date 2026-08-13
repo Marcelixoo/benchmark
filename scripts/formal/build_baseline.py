@@ -13,15 +13,33 @@ don't do this after formal runs have started without documenting why.
 from __future__ import annotations
 
 import argparse
+import os
 import subprocess
 import sys
 import time
+import uuid
 
+from benchmark_api import run_state
 from scripts.formal import baseline
 from scripts.lib.config import PROJECT_ROOT, data_dir, load_config
 from scripts.lib.opensearch_client import client, require_write_url
 
 DATA_FILES = ["corpus_initial.parquet", "corpus_writes.parquet", "queries_fixed_5000_corpus_relevant.parquet"]
+
+# Modules invoked below that are also registered benchmark_api/CLI steps —
+# write-through their run to run_state under the SAME step_id so a baseline
+# (re)build shows up live in the web UI exactly like a step triggered from
+# there, instead of being invisible just because it was launched by this
+# harness instead of cli.py/the "Run" button.
+MODULE_TO_STEP_ID = {
+    "scripts.opensearch.create_index": "create_index",
+    "scripts.index_initial_corpus": "index_initial_corpus",
+    "scripts.opensearch.verify_cluster": "verify_cluster",
+}
+
+
+def _now() -> str:
+    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
 
 def _git_sha() -> str:
@@ -29,10 +47,32 @@ def _git_sha() -> str:
     return out.stdout.strip()
 
 
-def _run_module(module: str, *args: str) -> None:
+def _run_module(module: str, *args: str, system: str | None = None) -> None:
     cmd = [sys.executable, "-m", module, *args]
     print(f"$ {' '.join(cmd)}")
-    subprocess.run(cmd, cwd=PROJECT_ROOT, check=True)
+
+    step_id = MODULE_TO_STEP_ID.get(module)
+    if step_id is None:
+        subprocess.run(cmd, cwd=PROJECT_ROOT, check=True)
+        return
+
+    run_id = uuid.uuid4().hex[:12]
+    env = {**os.environ, "PYTHONUNBUFFERED": "1"}
+    process = subprocess.Popen(
+        cmd, cwd=PROJECT_ROOT, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1, env=env,
+    )
+    run_state.start_run(step_id, system, run_id, process.pid)
+    seq = 0
+    for raw_line in iter(process.stdout.readline, ""):
+        text = raw_line.rstrip("\n")
+        print(text)
+        run_state.append_log_line(run_id, "stdout", text, seq, _now())
+        seq += 1
+    process.stdout.close()
+    returncode = process.wait()
+    run_state.finish_run(step_id, system, run_id, "done" if returncode == 0 else "failed")
+    if returncode != 0:
+        raise subprocess.CalledProcessError(returncode, cmd)
 
 
 def main() -> None:
@@ -47,14 +87,14 @@ def main() -> None:
 
     baseline.bring_up(args.system)
 
-    _run_module("scripts.opensearch.create_index", "--system", args.system)
+    _run_module("scripts.opensearch.create_index", "--system", args.system, system=args.system)
     index_args = ["--system", args.system]
     if args.limit is not None:
         index_args += ["--limit", str(args.limit)]
-    _run_module("scripts.index_initial_corpus", *index_args)
+    _run_module("scripts.index_initial_corpus", *index_args, system=args.system)
 
     baseline.wait_for_quiescence(args.system)
-    _run_module("scripts.opensearch.verify_cluster", "--system", args.system)
+    _run_module("scripts.opensearch.verify_cluster", "--system", args.system, system=args.system)
 
     write_url = require_write_url(system_config, args.system)
     os_client = client(write_url)
