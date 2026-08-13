@@ -24,6 +24,7 @@ from .models import (
     StepStatus,
     SystemInfo,
 )
+from . import run_state
 from .registry import STEPS, STEPS_BY_ID, StepDefinition
 from .runner import job_manager
 
@@ -82,39 +83,52 @@ def get_config() -> BenchmarkConfig:
 
 
 def get_step_status(step_id: str, system: str | None = None) -> StepState:
+    """Reads from `run_state` (plain JSON on disk) rather than the
+    in-process `JobManager`, so a run started by any process — this
+    server, a `cli.py run ...` in another terminal, another server
+    instance — is reported identically. `run_state.start_run`/`finish_run`
+    are the ones writing these files; `runner.JobManager` write-throughs to
+    them on every state change."""
     step = _get_step(step_id)
     config = load_config()
 
-    run = job_manager.latest_run_for(step_id, system)
-    if run is not None and run.status == StepStatus.RUNNING:
+    slot = run_state.read_slot(step_id, system)
+    if slot is not None and slot["status"] == "running" and not run_state.is_pid_alive(slot.get("pid")):
+        slot = run_state.mark_crashed(step_id, system)
+
+    if slot is not None and slot["status"] == "running":
         return StepState(
             step_id=step_id,
             status=StepStatus.RUNNING,
             system=system,
-            run_id=run.run_id,
+            run_id=slot["run_id"],
             blocked_reason=None,
             last_report_path=None,
-            updated_at=run.updated_at,
+            updated_at=slot["updated_at"],
         )
 
     report_path = step.report_path(config, system, False)
     has_report = report_path is not None and report_path.exists()
 
-    if run is not None:
-        status = run.status
+    if slot is not None:
+        status = StepStatus(slot["status"])
         blocked_reason = None
+        run_id = slot["run_id"]
+        updated_at = slot["updated_at"]
     else:
         blocked_reason = step.check_blocked(config, system)
         status = StepStatus.BLOCKED if blocked_reason else (StepStatus.DONE if has_report else StepStatus.NOT_RUN)
+        run_id = None
+        updated_at = _now()
 
     return StepState(
         step_id=step_id,
         status=status,
         system=system,
-        run_id=run.run_id if run else None,
+        run_id=run_id,
         blocked_reason=blocked_reason,
         last_report_path=str(report_path) if has_report else None,
-        updated_at=run.updated_at if run else _now(),
+        updated_at=updated_at,
     )
 
 
@@ -137,6 +151,13 @@ def run_step(step_id: str, system: str | None = None, calibration: bool = False)
 
 def stream_step_output(run_id: str) -> Iterator[LogLine]:
     return job_manager.iter_log(run_id)
+
+
+def run_exists(run_id: str) -> bool:
+    """Whether `run_id` is known at all — in this process's memory or in
+    the on-disk run_state — so callers (server.py's stream endpoint) can
+    404 an unknown/made-up run_id before opening a stream for it."""
+    return job_manager.run_exists(run_id)
 
 
 def get_report(step_id: str, system: str | None = None) -> Report:
