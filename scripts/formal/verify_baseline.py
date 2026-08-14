@@ -16,6 +16,44 @@ from scripts.lib.config import data_dir, load_config
 from scripts.lib.opensearch_client import client, require_write_url
 from scripts.opensearch.verify_cluster import docker_inspect, get_cluster_setting
 
+# Docker reports containers "healthy" before OpenSearch has necessarily
+# finished allocating shards / before search-capable nodes can reliably
+# serve requests -- observed both as a red cluster_health with unassigned
+# shards (local_index) and as TransportError(503,
+# 'search_phase_execution_exception') on count() (shared_index), both
+# within a ~10-20s window right after restore_baseline() returns. Poll
+# for real readiness before running any gate checks, instead of failing
+# the whole gate on this transient.
+READINESS_RETRY_TIMEOUT_S = 30.0
+READINESS_RETRY_INTERVAL_S = 2.0
+COUNT_RETRY_TIMEOUT_S = 20.0
+COUNT_RETRY_INTERVAL_S = 2.0
+
+
+def _wait_for_cluster_ready(os_client, timeout_s: float = READINESS_RETRY_TIMEOUT_S,
+                             interval_s: float = READINESS_RETRY_INTERVAL_S) -> dict:
+    deadline = time.monotonic() + timeout_s
+    health = os_client.cluster.health()
+    while True:
+        if health.get("status") in ("green", "yellow") and health.get("unassigned_shards", 1) == 0:
+            return health
+        if time.monotonic() >= deadline:
+            return health
+        time.sleep(interval_s)
+        health = os_client.cluster.health()
+
+
+def _count_with_retry(os_client, index_name: str, timeout_s: float = COUNT_RETRY_TIMEOUT_S,
+                       interval_s: float = COUNT_RETRY_INTERVAL_S):
+    deadline = time.monotonic() + timeout_s
+    while True:
+        try:
+            return os_client.count(index=index_name)
+        except Exception:
+            if time.monotonic() >= deadline:
+                raise
+            time.sleep(interval_s)
+
 
 def run_gate(system: str) -> dict:
     config = load_config()
@@ -39,7 +77,7 @@ def run_gate(system: str) -> dict:
                 "created_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
     check("baseline_manifest_exists", True, str(baseline.manifest_path(system)))
 
-    health = os_client.cluster.health()
+    health = _wait_for_cluster_ready(os_client)
     check("cluster_health_not_red", health.get("status") in ("green", "yellow"), health)
     check("no_unassigned_shards", health.get("unassigned_shards", 1) == 0, health.get("unassigned_shards"))
 
@@ -52,7 +90,7 @@ def run_gate(system: str) -> dict:
 
     os_client.indices.refresh(index=index_name)
     time.sleep(1)
-    doc_count = os_client.count(index=index_name).get("count")
+    doc_count = _count_with_retry(os_client, index_name).get("count")
     check("document_count_matches_baseline", doc_count == manifest["doc_count"],
           {"expected": manifest["doc_count"], "actual": doc_count})
 

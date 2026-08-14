@@ -1,0 +1,23 @@
+{
+  "_description": "Frozen parameters for the supplementary stress experiment (NOT part of the primary 18-run formal experiment). See experiment-config.json for the primary experiment; this file is separate and must not be confused with it.",
+  "based_on": "experiment-config.json (same corpus, query set, architectures)",
+  "capacity_reports": {
+    "local_index": "results/stress/capacity/local_index_capacity_report.json",
+    "shared_index": "results/stress/capacity/shared_index_capacity_report.json"
+  },
+  "max_sustainable_qps": {
+    "local_index": 1500,
+    "shared_index": 1600
+  },
+  "qps_stress_formula": "round(0.75 * min(max_sustainable_qps) / 10) * 10",
+  "qps_stress": 1120,
+  "write_docs_per_s": 500,
+  "measurement_s": 480,
+  "lead_in_s": 30,
+  "warmup_s": 180,
+  "repetitions": 3,
+  "workloads": {
+    "stress_w0": {"qps": 1120, "docs_per_s": 0},
+    "stress_w2": {"qps": 1120, "docs_per_s": 500}
+  }
+}
